@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './header.scss';
 
 export default class AppHeader extends Component {
     constructor(props) {
@@ -6,7 +7,12 @@ export default class AppHeader extends Component {
     }
     render() {
         return (
-            <div>Header calling</div>
+            <div className="container">
+                <div>
+
+                </div>
+
+            </div>
         )
     }
 }

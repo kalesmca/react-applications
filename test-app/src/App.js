@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from './components/header/header';
 import Savings from './components/savings/saving-table';
+import './App.css';
 
 export default class App extends Component {
   constructor(props) {
@@ -10,7 +11,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <div>React App calling</div>
         <AppHeader />
         <Savings />
       </div>
