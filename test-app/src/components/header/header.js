@@ -7,7 +7,7 @@ export default class AppHeader extends Component {
     }
     render() {
         return (
-            <div className="container">
+            <div className="container-head">
                 <div>
 
                 </div>

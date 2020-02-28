@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from './components/header/header';
 import Savings from './components/savings/saving-table';
+import CreateEntry from "./components/entry/create-entry";
 import './App.css';
 
 export default class App extends Component {
@@ -12,7 +13,8 @@ export default class App extends Component {
     return (
       <div>
         <AppHeader />
-        <Savings />
+        {/* <Savings /> */}
+        <CreateEntry />
       </div>
     )
   }
