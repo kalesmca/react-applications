@@ -9,7 +9,7 @@ export default class AppHeader extends Component {
         return (
             <div className="container-head">
                 <div>
-
+                    <h3>Family Budget </h3>
                 </div>
 
             </div>
