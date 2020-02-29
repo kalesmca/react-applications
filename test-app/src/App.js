@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppHeader from './components/header/header';
 import Savings from './components/savings/saving-table';
 import CreateEntry from "./components/entry/create-entry";
+import BankComponent from "./shared/components/bank-info";
 import './App.css';
 
 export default class App extends Component {
@@ -15,6 +16,7 @@ export default class App extends Component {
         <AppHeader />
         {/* <Savings /> */}
         <CreateEntry />
+        {/* <BankComponent /> */}
       </div>
     )
   }
