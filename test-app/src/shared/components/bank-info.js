@@ -9,6 +9,7 @@ export default class BankComponent extends Component {
     }
     constructor(props) {
         super(props);
+        console.log('bank info:', props);
     }
     componentWillMount = () => {
         console.log('mount calling');
@@ -34,7 +35,7 @@ export default class BankComponent extends Component {
 
                         <div className="form-group">
                             <label htmlFor="amt">Amount :</label>
-                            <input id="amt" placeholder="Enter Amount" type="number" onChange={(e => { this.changeAmt(e) })} value={this.state.amt} className="form-control" />
+                            <input disabled={this.props.type === "Debit"} id="amt" placeholder="Enter Amount" type="number" onChange={(e => { this.changeAmt(e) })} value={this.state.amt} className="form-control" />
                         </div>
                         <div className="form-group">
                             <label htmlFor="bankName">Bank Name :</label>

@@ -3,13 +3,18 @@ import "./create-entry.scss";
 import BankComponent from '../../shared/components/bank-info';
 import CustomTable from '../../shared/components/table';
 import Constants from '../../config/constant';
+import ApiService from '../../shared/services/api-service';
 
 export default class CreateEntry extends Component {
     state = {
-        entryType: "Debit"
+        entryType: "Credit",
+        purchaseAmt: 0
     }
+    apiService;
     constructor(props) {
-        super(props)
+        super(props);
+        this.apiService = new ApiService();
+
     }
     constants = new Constants();
     changeType = (e) => {
@@ -24,6 +29,23 @@ export default class CreateEntry extends Component {
     }
     showPurchasepop = () => {
         console.log('popup calling');
+    }
+    setTotalValue = (data) => {
+        console.log('data ::', data);
+        let tmpTotal = 0
+        data.map((row) => {
+            tmpTotal = tmpTotal + row[4].value;
+        });
+        this.setState({ purchaseAmt: tmpTotal });
+    }
+    saveEntry = (e) => {
+        let reqParam = {
+            entryType: this.state.entryType,
+            purchaseAmt: this.state.purchaseAmt,
+        }
+        this.apiService.saveEntry(reqParam).then((res) => {
+            console.log('Api response ::', res);
+        });
     }
     render() {
         return (
@@ -62,7 +84,7 @@ export default class CreateEntry extends Component {
                                 </div>
                                 <div className="row">
                                     <div className="form-group col-sm-4">
-                                        <input type="button" className="btn btn-primary" value="save" />
+                                        <input type="button" className="btn btn-primary" value="save" onClick={(e) => { this.saveEntry(e) }} />
                                     </div>
                                     {this.state.entryType === "Debit" ?
                                         <div className="form-group col-sm-4">
@@ -79,11 +101,11 @@ export default class CreateEntry extends Component {
                             {
                                 this.state.entryType != "" ?
                                     this.state.entryType === "Credit" || this.state.entryType === "Debit" ? (<div className="col-sm-3">
-                                        <BankComponent getChildData={this.getChildData} title="Bank Info" />
+                                        <BankComponent getChildData={this.getChildData} type={this.state.entryType} title="Bank Info" />
                                     </div>) : (<div><div className="col-sm-3">
-                                        <BankComponent getChildData={this.getChildData} title="Debited From" />
+                                        <BankComponent getChildData={this.getChildData} type={this.state.entryType} title="Debited From" />
                                     </div> <div className="col-sm-1"></div> <div className="col-sm-3">
-                                            <BankComponent getChildData={this.getTransfredBankInfo} title="Credited To" />
+                                            <BankComponent type={this.state.entryType} getChildData={this.getTransfredBankInfo} title="Credited To" />
                                         </div> </div>) : ""
                             }
 
@@ -104,10 +126,19 @@ export default class CreateEntry extends Component {
                                 <h4 className="modal-title">Purchase Info</h4>
                             </div>
                             <div className="modal-body" style={{ maxHeight: "400px", overflow: "scroll" }}>
-                                <CustomTable columns={this.constants.purchaseTableColumns} rows={this.constants.blankRow} />
+                                <CustomTable calculateTotal={this.setTotalValue} columns={this.constants.purchaseTableColumns} rows={this.constants.blankRow} />
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                <div className="row">
+                                    <div className="col-sm-3">
+                                        <span>Total : </span> <span>{this.state.purchaseAmt}</span>
+                                    </div>
+                                    <div className="col-sm-6"></div>
+                                    <div className="col-sm-3">
+                                        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 

@@ -24,6 +24,15 @@ export default class CustomTable extends Component {
         tmpRows.splice(rowIndex, 1);
         this.setState({ rows: tmpRows })
     }
+    calculateAmt = (rowIndex, columnIndex, e) => {
+        let tmpRows = this.state.rows;
+        tmpRows[rowIndex][columnIndex].value = e.target.value;
+        if (columnIndex === 3) {
+            tmpRows[rowIndex][columnIndex + 1].value = tmpRows[rowIndex][columnIndex - 1].value * tmpRows[rowIndex][columnIndex].value;
+            this.props.calculateTotal(tmpRows);
+        }
+        this.setState({ rows: tmpRows });
+    }
 
     render() {
         return (
@@ -54,8 +63,8 @@ export default class CustomTable extends Component {
                                                                     <span className="glyphicon glyphicon-minus" onClick={(e) => { this.deleteRow(rowIndex) }}></span>
                                                                     <span className="glyphicon glyphicon-pencil" ></span>
                                                                 </a>
-                                                            ) :
-                                                                    column.name === "sno" ? (<span> {rowIndex + 1}</span>) : (<input type="text" className="form-control" />)
+                                                            ) : column.name === "amt" ? (<span>{column.value}</span>) :
+                                                                        column.name === "sno" ? (<span> {rowIndex + 1}</span>) : (<input type="text" className="form-control" value={column.value} onChange={(e) => { this.calculateAmt(rowIndex, columnIndex, e) }} />)
                                                         }
 
                                                     </td>
