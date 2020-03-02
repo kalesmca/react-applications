@@ -15,4 +15,10 @@ export default class ApiService {
             data
         });
     }
+    getAllEntry = () => {
+        return axios({
+            method: 'get',
+            url: this.constant.backEndUrl.getAllEntryUrl,
+        });
+    }
 }

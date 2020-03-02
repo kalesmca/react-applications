@@ -64,7 +64,7 @@ export default class CustomTable extends Component {
                                                                     <span className="glyphicon glyphicon-pencil" ></span>
                                                                 </a>
                                                             ) : column.name === "amt" ? (<span>{column.value}</span>) :
-                                                                        column.name === "sno" ? (<span> {rowIndex + 1}</span>) : (<input type="text" className="form-control" value={column.value} onChange={(e) => { this.calculateAmt(rowIndex, columnIndex, e) }} />)
+                                                                        column.name === "sno" ? (<span> {rowIndex + 1}</span>) : (<input type={column.type} className="form-control" value={column.value} onChange={(e) => { this.calculateAmt(rowIndex, columnIndex, e) }} />)
                                                         }
 
                                                     </td>

@@ -4,11 +4,17 @@ import BankComponent from '../../shared/components/bank-info';
 import CustomTable from '../../shared/components/table';
 import Constants from '../../config/constant';
 import ApiService from '../../shared/services/api-service';
+import ShowAll from '../show-all/showAll';
 
 export default class CreateEntry extends Component {
+    reqParam = {
+        rows: []
+    };
     state = {
         entryType: "Credit",
-        purchaseAmt: 0
+        purchaseAmt: 0,
+        reason: "",
+        entryDate: ""
     }
     apiService;
     constructor(props) {
@@ -20,10 +26,24 @@ export default class CreateEntry extends Component {
     changeType = (e) => {
         console.log('type ::', e.target.value);
         this.setState({ entryType: this.constants.entryTypes[e.target.value].type })
+        this.reqParam.entryType = this.constants.entryTypes[e.target.value].type;
     }
     getChildData = (data) => {
         console.log('parent data::', data);
     }
+    setCreditBankInfo = (data) => {
+        console.log('credit bank Info ::', data);
+        this.reqParam.BankInfo = {
+            creditInfo: data
+        }
+    }
+    setDebitBankInfo = (data) => {
+        console.log('Debit bank Info ::', data);
+        this.reqParam.BankInfo = {
+            debitInfo: data
+        }
+    }
+
     getTransfredBankInfo = (data) => {
         console.log('transffered Data', data);
     }
@@ -31,21 +51,25 @@ export default class CreateEntry extends Component {
         console.log('popup calling');
     }
     setTotalValue = (data) => {
+
         console.log('data ::', data);
         let tmpTotal = 0
         data.map((row) => {
             tmpTotal = tmpTotal + row[4].value;
         });
+        this.reqParam.rows.push(data);
         this.setState({ purchaseAmt: tmpTotal });
     }
     saveEntry = (e) => {
-        let reqParam = {
-            entryType: this.state.entryType,
-            purchaseAmt: this.state.purchaseAmt,
-        }
-        this.apiService.saveEntry(reqParam).then((res) => {
+        console.log('reqest::', this.reqParam);
+        this.reqParam.purchaseAmt = this.state.purchaseAmt;
+        this.apiService.saveEntry(this.reqParam).then((res) => {
             console.log('Api response ::', res);
         });
+    }
+    changeElementMethod = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+        this.reqParam[e.target.name] = e.target.value;
     }
     render() {
         return (
@@ -57,12 +81,12 @@ export default class CreateEntry extends Component {
                                 <div className="row">
                                     <div className="form-group">
                                         <label htmlFor="entry-date">Date :</label>
-                                        <input id="entry-date" type="date" className="form-control" />
+                                        <input name="entryDate" id="entry-date" type="date" onChange={(e) => { this.setState({ entryDate: e.target.value }); this.reqParam.entryDate = e.target.value }} className="form-control" value={this.state.entryDate} />
                                     </div>
                                 </div>
 
                                 <div className="row">
-                                    <div className="form-group">
+                                    <div className="form-group col-sm-6">
                                         <label htmlFor="entry-type">Entry Type :</label>
                                         <select id="entry-type" className="form-control" onChange={e => { this.changeType(e) }}>
                                             {
@@ -74,14 +98,22 @@ export default class CreateEntry extends Component {
                                             }
                                         </select>
                                     </div>
+                                    {
+                                        this.state.entryType === "Debit" ? (<div className="form-group col-sm-6">
+                                            <label htmlFor="entry-amt">Amount :</label>
+                                            <input name="amt" id="entry-amt" type="number" className="form-control" value={this.state.purchaseAmt} onChange={(e) => { this.setState({ purchaseAmt: e.target.value }) }} />
+                                        </div>) : ""
+                                    }
+
                                 </div>
 
                                 <div className="row">
                                     <div className="form-group">
                                         <label htmlFor="entry-reason">Reason :</label>
-                                        <textarea id="entry-reason" type="text" className="form-control" />
+                                        <textarea name="reason" id="entry-reason" type="text" className="form-control" value={this.state.reason} onChange={(e) => { this.setState({ reason: e.target.value }); this.reqParam.reason = e.target.value }} />
                                     </div>
                                 </div>
+
                                 <div className="row">
                                     <div className="form-group col-sm-4">
                                         <input type="button" className="btn btn-primary" value="save" onClick={(e) => { this.saveEntry(e) }} />
@@ -100,13 +132,14 @@ export default class CreateEntry extends Component {
 
                             {
                                 this.state.entryType != "" ?
-                                    this.state.entryType === "Credit" || this.state.entryType === "Debit" ? (<div className="col-sm-3">
-                                        <BankComponent getChildData={this.getChildData} type={this.state.entryType} title="Bank Info" />
-                                    </div>) : (<div><div className="col-sm-3">
-                                        <BankComponent getChildData={this.getChildData} type={this.state.entryType} title="Debited From" />
-                                    </div> <div className="col-sm-1"></div> <div className="col-sm-3">
-                                            <BankComponent type={this.state.entryType} getChildData={this.getTransfredBankInfo} title="Credited To" />
-                                        </div> </div>) : ""
+                                    this.state.entryType === "Credit" ? (<div className="col-sm-3">
+                                        <BankComponent getChildData={this.setCreditBankInfo} type={this.state.entryType} title="Bank Info" />
+                                    </div>) : this.state.entryType === "Debit" ? (<div className="col-sm-3">
+                                        <BankComponent getChildData={this.setDebitBankInfo} type={this.state.entryType} title="Bank Info" /> </div>) : (<div><div className="col-sm-3">
+                                            <BankComponent getChildData={this.getChildData} type={this.state.entryType} title="Debited From" />
+                                        </div> <div className="col-sm-1"></div> <div className="col-sm-3">
+                                                <BankComponent type={this.state.entryType} getChildData={this.getTransfredBankInfo} title="Credited To" />
+                                            </div> </div>) : ""
                             }
 
 
@@ -144,6 +177,9 @@ export default class CreateEntry extends Component {
 
                     </div>
                 </div>
+                <div className="row"></div>
+                <ShowAll />
+
             </div>
         )
     }
