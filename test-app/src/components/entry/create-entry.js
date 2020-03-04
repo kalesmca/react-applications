@@ -55,7 +55,7 @@ export default class CreateEntry extends Component {
         console.log('data ::', data);
         let tmpTotal = 0
         data.map((row) => {
-            tmpTotal = tmpTotal + row[4].value;
+            tmpTotal = tmpTotal + row[5].value;
         });
         this.reqParam.rows.push(data);
         this.setState({ purchaseAmt: tmpTotal });
