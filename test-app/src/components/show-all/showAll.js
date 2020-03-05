@@ -7,7 +7,8 @@ export default class ShowAll extends Component {
 
     state = {
         rows: [],
-        totalAmt: 0
+        totalAmt: 0,
+        entryType: "Credit"
     }
     apiService;
     constructor(props) {
@@ -16,13 +17,16 @@ export default class ShowAll extends Component {
     }
 
     componentWillMount = () => {
-        this.getAllEntry();
+        this.getAllByType(this.state.entryType);
     }
     changeType = (e) => {
         console.log('e ::', e);
+        this.setState({ entryType: this.constants.entryTypes[e.target.value] });
+        this.getAllByType(this.constants.entryTypes[e.target.value].type);
     }
-    getAllEntry = () => {
-        this.apiService.getAllEntry().then((res) => {
+    getAllByType = (type) => {
+        let query = { entryType: type }
+        this.apiService.getDataByQuery(query).then((res) => {
             console.log('response::', res);
             if (res.data && res.data.data) {
                 console.log('res.data.data  ::', res.data.data)
@@ -51,7 +55,7 @@ export default class ShowAll extends Component {
                                 </td>
                                 <td>
                                     <span>
-                                        <select id="entry-type" className="form-control" onChange={e => { this.changeType(e) }}>
+                                        <select id="entry-type" className="form-control" value={this.state.entryType} onChange={e => { this.changeType(e) }}>
                                             {
                                                 this.constants.entryTypes.map((entry, index) => {
                                                     if (index < 2) {
@@ -103,7 +107,7 @@ export default class ShowAll extends Component {
 
                             </tbody>) : (<tbody>
                                 <tr>
-                                    <td colSpan="4"> No Record found</td>
+                                    <td colSpan="4" style={{ textAlign: "center" }}> No Record found</td>
                                 </tr>
                             </tbody>)
                         }

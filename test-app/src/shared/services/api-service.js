@@ -21,4 +21,13 @@ export default class ApiService {
             url: this.constant.backEndUrl.getAllEntryUrl,
         });
     }
+
+    getDataByQuery = (query) => {
+        return axios({
+            method: 'post',
+            url: this.constant.backEndUrl.getDataByQuery,
+            data: query
+        });
+
+    }
 }

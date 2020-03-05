@@ -6,6 +6,7 @@ export default class Constants {
     entryListColumns = [{ id: 1, name: "Sno" }, { id: 2, name: "Date" }, { id: 3, name: "Type" }, { id: 4, name: "Amount" }, { id: 5, name: "Reason" }]
     backEndUrl = {
         saveEntryUrl: "http://localhost:8080/budget/save",
-        getAllEntryUrl: "http://localhost:8080/budget/getAll"
+        getAllEntryUrl: "http://localhost:8080/budget/getAll",
+        getDataByQuery: "http://localhost:8080/budget/getDataByQuery"
     }
 }
