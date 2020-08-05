@@ -1,4 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+T
+
+# Create profile and  List-profiles
+
+Those two belongs to redux concept 
+
+
+## Student profile and studet list are hooks concepts
+
+
+
+
+
+
+
+his project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

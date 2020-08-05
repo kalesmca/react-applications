@@ -3,26 +3,16 @@ import logo from './logo.svg';
 import './App.css';
 import CreateProfile from './components/create-profile';
 import ProfileList from './components/list-profile';
+import CreateStudent from './components/create-student';
 
 function App() {
   return (
     <div className="App container">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <CreateProfile></CreateProfile>
-      <ProfileList></ProfileList>
+      
+      {/* <CreateProfile></CreateProfile>
+      <ProfileList></ProfileList> */}
+
+      <CreateStudent></CreateStudent>
     </div>
   );
 }
