@@ -4,6 +4,7 @@ import './App.css';
 import CreateProfile from './components/create-profile';
 import ProfileList from './components/list-profile';
 import CreateStudent from './components/create-student';
+import ComponentA from './components/context-test-components/ComponentA';
 
 function App() {
   return (
@@ -12,7 +13,12 @@ function App() {
       {/* <CreateProfile></CreateProfile>
       <ProfileList></ProfileList> */}
 
-      <CreateStudent></CreateStudent>
+      {/* <CreateStudent></CreateStudent> */}
+
+      <div>
+        Test Functional Context
+          <ComponentA />
+      </div>
     </div>
   );
 }

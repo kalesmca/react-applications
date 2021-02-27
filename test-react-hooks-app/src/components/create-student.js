@@ -12,7 +12,7 @@ const CreateStudent = () => {
         // } else {
         //     setAge(e.target.value);
         // }
-debugger
+
         let tmpObj = obj;
         tmpObj[e.target.name] = e.target.value;
         setObj(tmpObj);

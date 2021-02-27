@@ -1,0 +1,3 @@
+export const ASC_MEMBERS = "ASC_MEMBERS"
+export const DESC_MEMBERS = "DESC_MEMBERS"
+export const UPDATE_APPSTATE = "UPDATE_APPSTATE"
