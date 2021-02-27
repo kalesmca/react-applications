@@ -1,5 +1,5 @@
 import MOCK_MEMBERS from '../../data/MEMBERS_MOCK.json';
-import {ASC_MEMBERS} from '../../constants';
+import {SORTING_MEMBERS, DELETE_MEMBER} from '../../constants';
 
 const initialState = {
     memberList: MOCK_MEMBERS,
@@ -15,10 +15,10 @@ const initialState = {
 const memberReducer = (state=initialState, action) =>{
     console.log('Members Reducer :', state, action)
     switch(action.type) {
-        case 'ADD_MEMBER':
-            return {...state}
-        case 'ASC_MEMBERS':
-            return {...state, members:action.tempMemberState}
+        case DELETE_MEMBER:
+            return {...state, ...action.tempMemberState}
+        case SORTING_MEMBERS:
+            return {...state, ...action.tempMemberState}
         default:
             return {...state}
     }

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {ascOrderMembers} from '../redux/actions/member';
+import {sortingMembers, deleteMember} from '../redux/actions/member';
 import "./global.css";
 import {MEMBER_TITLE} from '../constants'
-import memberReducer from "../redux/reducers/member";
 
 const MemberList = () => {
   const dispatch = useDispatch()
@@ -14,17 +13,25 @@ const MemberList = () => {
   });
   console.log("members :", memberState, MEMBER_TITLE);
 
-  const testing = () => {
+  const sorting = (index) => {
       console.log('testing');
-      dispatch(ascOrderMembers(applicationState, 5))
+      dispatch(sortingMembers(applicationState, index))
 
   }
+  const deleteRow = (index) => {
+      console.log('deleteRow :', index)
+      dispatch(deleteMember(applicationState, index))
+  }
+
+  useEffect(()=>{
+      console.log('useEE',applicationState)
+  })
 
   return (
     <div>
       {" "}
       MemberList Rendered 
-      <button onClick={(e)=>{testing()}}>test</button>
+      <button onClick={(e)=>{sorting()}}>test</button>
       <div>
         <table>
           <thead>
@@ -37,9 +44,9 @@ const MemberList = () => {
                     {header.fieldName} .. {header.sortingType} 
                     {header.sortingType &&
                       <span
-                        // onClick={(e) => {
-                        //   updateColumns(colIndex);
-                        // }}
+                        onClick={(e) => {
+                            sorting(headerIndex);
+                        }}
                       >
                         {header.sortingType === 'asc' ? " 🔽" : " 🔼"}
                       </span>
@@ -47,6 +54,7 @@ const MemberList = () => {
                   </th>
                 );
               })}
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -56,6 +64,7 @@ const MemberList = () => {
                   {memberState.headerList.map((column, colmnId) => {
                     return <td key={colmnId}>{row[column.key]}</td>;
                   })}
+                  <td><span onClick={()=>{deleteRow(rowIndex)}}>Delete</span></td>
                 </tr>
               );
             })}
