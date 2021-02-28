@@ -31,7 +31,6 @@ const MemberList = () => {
     <div>
       {" "}
       MemberList Rendered 
-      <button onClick={(e)=>{sorting()}}>test</button>
       <div>
         <table>
           <thead>
@@ -41,7 +40,7 @@ const MemberList = () => {
               {memberState.headerList.map((header, headerIndex) => {
                 return (
                   <th key={headerIndex}>
-                    {header.fieldName} .. {header.sortingType} 
+                    {header.fieldName} 
                     {header.sortingType &&
                       <span
                         onClick={(e) => {
