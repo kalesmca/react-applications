@@ -1,4 +1,4 @@
-import {SORTING_MEMBERS, DELETE_MEMBER} from '../../constants';
+import {SORTING_MEMBERS, DELETE_MEMBER, UPDATE_MEMBERS} from '../../constants';
 
 export const sortingMembers = (appState, index) =>{
     let tempMemberState = {...appState.members}
@@ -34,4 +34,21 @@ export const deleteMember = (appState, index) => {
     let tempMemberState = {...appState.members}
     tempMemberState.memberList.splice(index, 1)
     return {type: DELETE_MEMBER, tempMemberState}
+}
+
+export const addEventsToMember = (appState, rowIndex, selectedEvent, eventList ) => {
+  let tempMemberState = {...appState.members}
+  let tempEventsState = {...appState.events}
+  let eventIndex = tempEventsState.eventList.findIndex((e) => {
+    return e.id === selectedEvent[0].id
+  })
+  console.log('event Index :', eventIndex)
+  // const event = tempEventsState.filter((e) => {
+  //   return e.id === selectedEvent[0].id
+  // })
+  if(eventIndex >= 0 && tempEventsState.eventList[eventIndex].availability) {
+    tempMemberState.memberList[rowIndex].events = eventList
+  }
+  return {type: UPDATE_MEMBERS, tempMemberState}
+
 }
