@@ -1,4 +1,6 @@
 import {SORTING_MEMBERS, DELETE_MEMBER, UPDATE_MEMBERS} from '../../constants';
+import {updateEvents} from '../actions/event';
+import { useDispatch } from "react-redux";
 
 export const sortingMembers = (appState, index) =>{
     let tempMemberState = {...appState.members}
@@ -36,18 +38,23 @@ export const deleteMember = (appState, index) => {
     return {type: DELETE_MEMBER, tempMemberState}
 }
 
-export const addEventsToMember = (appState, rowIndex, selectedEvent, eventList ) => {
+export const AddEventsToMember = (appState, rowIndex, selectedEvent, eventList ) => {
+  // const dispatch = useDispatch()
   let tempMemberState = {...appState.members}
   let tempEventsState = {...appState.events}
   let eventIndex = tempEventsState.eventList.findIndex((e) => {
     return e.id === selectedEvent[0].id
   })
-  console.log('event Index :', eventIndex)
-  // const event = tempEventsState.filter((e) => {
-  //   return e.id === selectedEvent[0].id
-  // })
+  
   if(eventIndex >= 0 && tempEventsState.eventList[eventIndex].availability) {
     tempMemberState.memberList[rowIndex].events = eventList
+    if(tempEventsState.eventList[eventIndex].availability === 1 ){
+      tempEventsState.eventList[eventIndex].isDisabled = true
+    }
+    tempEventsState.eventList[eventIndex].availability = tempEventsState.eventList[eventIndex].availability-1
+    const memberObj = {name: tempMemberState.memberList[rowIndex].name, id: tempMemberState.memberList[rowIndex].id}
+    tempEventsState.eventList[eventIndex].members.push(memberObj)
+    updateEvents(tempEventsState)
   }
   return {type: UPDATE_MEMBERS, tempMemberState}
 

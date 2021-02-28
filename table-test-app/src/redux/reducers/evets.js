@@ -1,5 +1,5 @@
 import MOCK_EVENTS from '../../data/EVENTS_MOCK.json';
-import {DELETE_EVENTS} from '../../constants';
+import {DELETE_EVENTS, UPDATE_EVENTS} from '../../constants';
 
 const initialState = {
     eventList: MOCK_EVENTS,
@@ -10,6 +10,7 @@ const initialState = {
         { fieldName: "Duration", key: "duration" },
         { fieldName: "Event Name ", key: "eventName" },
         { fieldName: "Capacity ", key: "capacity" },
+        { fieldName: "Availability", key: "availability" },
         
       ]
 }
@@ -21,6 +22,9 @@ const eventReducer = (state=initialState, action) =>{
             return {...state}
         case DELETE_EVENTS:
             return {...state, ...action.tempEventsState}
+        case UPDATE_EVENTS:
+            return {...state, ...action.updatedEventState}
+            
         default:
             return {...state}
     }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {sortingMembers, deleteMember, addEventsToMember} from '../redux/actions/member';
+import {sortingMembers, deleteMember, AddEventsToMember} from '../redux/actions/member';
 import MultiSelect from "react-multi-select-component";
 
 import "./global.css";
@@ -49,7 +49,7 @@ const MemberList = () => {
 
     
     console.log('newValue :', newSelectedEvent)
-    dispatch(addEventsToMember(applicationState, index, newSelectedEvent, value))
+    dispatch(AddEventsToMember(applicationState, index, newSelectedEvent, value))
     debugger
     // tmpObj.memberList[index].events = value;
     // setMemberState(tmpObj)
