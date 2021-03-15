@@ -52,7 +52,7 @@ export const AddEventsToMember = (appState, rowIndex, selectedEvent, eventList )
       tempEventsState.eventList[eventIndex].isDisabled = true
     }
     tempEventsState.eventList[eventIndex].availability = tempEventsState.eventList[eventIndex].availability-1
-    const memberObj = {name: tempMemberState.memberList[rowIndex].name, id: tempMemberState.memberList[rowIndex].id}
+    const memberObj = {label: tempMemberState.memberList[rowIndex].name,value: tempMemberState.memberList[rowIndex].name, id: tempMemberState.memberList[rowIndex].id}
     tempEventsState.eventList[eventIndex].members.push(memberObj)
     updateEvents(tempEventsState)
   }

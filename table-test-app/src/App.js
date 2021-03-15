@@ -5,13 +5,12 @@ import store from "./redux/store.js";
 import MemberList from './components/memberList';
 import EventList from './components/eventList';
 import Test from './components/test';
-
+import Root from './components/root';
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <MemberList />
-        <EventList />
+        <Root />
         {/* <Test /> */}
       </div>
     </Provider>
