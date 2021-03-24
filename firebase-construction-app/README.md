@@ -1,3 +1,43 @@
+
+
+# Spread operator object tricks
+
+<script>
+let obj = {
+	remote: {
+  	students:{
+    	address:{
+      	city:'rajapalayam',
+        state:'tamilnadu'
+      },
+      name:'kalees'
+    }
+  },
+  local: {
+  	students:{
+    	address:{
+      	city:'rajapalayam',
+        state:'tamilnadu'
+      },
+      name:'kalees'
+    }
+  }
+}
+
+let address = {
+	city:'Bangalore',
+  state:'Karnataka'
+}
+
+
+  console.log(obj)
+  
+  let newObj = {...obj, local:{...obj.local, students:{...obj.local.students,address}}}
+   console.log('result', newObj) 
+</script>
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
