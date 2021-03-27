@@ -6,7 +6,7 @@ import {UPDATE_SAMPLE_MODAL_FLAG} from '../constants';
 import {updateSampleModalFlag} from '../Redux/actions/modals';
 import Materials from './materials';
 
-export default function AppContainer (){
+ const AppContainer = () =>{
     const [show, setShowModal] = useState(false)
     const applicationState = useSelector((state)=>state)
     console.log('application state:', applicationState)
@@ -63,3 +63,5 @@ export default function AppContainer (){
     )
 
 }
+
+export default AppContainer;

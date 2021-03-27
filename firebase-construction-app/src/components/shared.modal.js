@@ -4,7 +4,7 @@ import {Modal, Button} from 'react-bootstrap';
 import {updateSampleModalFlag} from '../Redux/actions/modals';
 
 
-export default function SharedModal (props){
+const SharedModal = (props) => {
     console.log('modal props', props)
     const applicationState = useSelector(state=>state)
     const dispatch = useDispatch()
@@ -36,4 +36,6 @@ export default function SharedModal (props){
 
     )
 
-}                          
+}
+
+export default SharedModal;

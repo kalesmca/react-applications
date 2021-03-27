@@ -4,7 +4,7 @@ import { propTypes } from "react-bootstrap/esm/Image";
 import { useSelector, useDispatch } from "react-redux";
 import {addMaterial} from '../Redux/actions/materials';
 
-export default function Materials(props) {
+const Materials = (props) => {
   const applicationState = useSelector((state) => state);
   const dispatchAction = useDispatch();
   // const [obj, setObj] = useState({materialName:'',})
@@ -116,3 +116,4 @@ export default function Materials(props) {
     </div>
   );
 }
+export default Materials;

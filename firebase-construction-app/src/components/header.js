@@ -1,7 +1,7 @@
 import React from 'react';
 import './global.css';
 
-export default function Header (){
+ const Header = () => {
 
     return(
 
@@ -10,3 +10,5 @@ export default function Header (){
     )
 
 }
+
+export default Header;

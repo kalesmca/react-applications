@@ -13,8 +13,6 @@ const initialState = {
 };
 
 const materials = (state = initialState, action) => {
-    console.log('action:', action)
-    debugger
   switch (action.type) {
     case ADD_MATERIAL_TYPE:
       return {
@@ -23,8 +21,8 @@ const materials = (state = initialState, action) => {
       };
     case ADD_MATERIAL:
       return {
-        ...state, materials
-        
+        ...state,
+        materialList: [...action.payload, [...tempMaterial]]
       };
     default:
       return { ...state };
