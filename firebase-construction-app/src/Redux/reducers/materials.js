@@ -1,5 +1,5 @@
 import { ADD_MATERIAL_TYPE, ADD_MATERIAL } from "../../constants";
-const tempMaterial = { name: "", price: "", qty: "", amt: "", vadagai: "" };
+const tempMaterial = { name: "", price: "", qty: "", amt: "", vadagai: "", date:"", id:''};
 const initialState = {
   materialTypes: [
     { id: 1, type: "Manal" },
@@ -22,7 +22,7 @@ const materials = (state = initialState, action) => {
     case ADD_MATERIAL:
       return {
         ...state,
-        materialList: [...action.payload, [...tempMaterial]]
+        materialList: [...action.payload, tempMaterial]
       };
     default:
       return { ...state };

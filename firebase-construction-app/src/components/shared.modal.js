@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, memo} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Modal, Button} from 'react-bootstrap';
 import {updateSampleModalFlag} from '../Redux/actions/modals';
@@ -38,4 +38,4 @@ const SharedModal = (props) => {
 
 }
 
-export default SharedModal;
+export default memo(SharedModal);

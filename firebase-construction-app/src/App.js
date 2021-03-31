@@ -3,6 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React,{useState} from 'react';
 import Header from './components/header';
 import AppContainer from './components/Container';
+import Testing from './components/testing';
+import store from './Redux/store';
+import {Provider} from 'react-redux';
 function App() {
   const [userName, setUserName] = useState('')
   const [city, setCity] = useState('') 
@@ -13,25 +16,10 @@ function App() {
     console.log('calling')
   }
   return (
-    // <div className="App">
-    //   <div> 
-    //   <label>Name :</label>
-    //   <input type ="text" value={userName} onChange={(e)=>{setUserName(e.target.value)}} />
-
-    //   </div>
-    //   <div> 
-    //   <label>City :</label>
-    //   <input type ="text" value={city} onChange={(e)=>{setCity(e.target.value)}} />
-
-    //   </div>
-    //   <button onClick={()=>{save()}}>Save</button>
-    //   <List />
-
-    // </div>
-    <div>
-      <Header/>
-      <AppContainer />
-    </div>
+    <Provider store={store}>
+      <Testing />
+    </Provider>
+    
   );
 }
 
