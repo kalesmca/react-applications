@@ -7,8 +7,24 @@ export const addMaterialType = (data) =>{
 }
 
 export const addMaterial = (data, materialList) =>{
+    console.log('data :', data)
     materialList[materialList.length-1] = data
-   return ({type:ADD_MATERIAL, payload:materialList })
+    
+    return async dispatch =>{
+       await fetch("http://localhost:4000/materialList",{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            
+        },
+        body:JSON.stringify(data)
+
+    }).then((response) => {
+        console.log('api Response :', response)
+    })
+        dispatch({type:ADD_MATERIAL, payload:materialList })
+    }
+//    return ({type:ADD_MATERIAL, payload:materialList })
 }
 
 // export const addMaterial = (data, materialList) =>{
