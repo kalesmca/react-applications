@@ -21,3 +21,30 @@ export default class App extends Component {
     )
   }
 }
+
+//    Pure Component Example
+
+// export default class App extends PureComponent {
+//   constructor(props) {
+//     super(props);
+//     console.log('app calling');
+//     this.state ={
+//       counter:0
+//     } 
+//   }
+//   componentDidMount(){
+    
+//     setInterval(() => {
+//       let tmp = this.state.counter;
+//       this.setState({counter: tmp+1})
+//     }, 1000);
+//   }
+//   render() {
+//     console.log('rerendeing')
+//     return (
+//       <div>
+//         my Data ={this.state.counter}
+//       </div>
+//     )
+//   }
+// }
