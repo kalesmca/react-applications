@@ -2,8 +2,8 @@ import React from 'react';
 import { UserContext } from '../App';
 
 
-const ComponentC = () => {
-
+const ComponentC = (props) => {
+    console.log('props:', props)
     return(
         
         <div> ComponentC 
