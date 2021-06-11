@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container{
+  padding: 5px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 5px;
+  border: darkturquoise 3px solid;
+  /* flex-direction: column; */
+  /* height: 800px; */
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  /* align-items: flex-start; */
+  /* justify-content: flex-start;
+  
+  /* align-content: flex-start;  */
+  /* align-items: stretch; */
+
 }
 
-.App-link {
-  color: #61dafb;
+.item{
+  border: 1px solid black;
+  /* height: 100px; */
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+   
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.item1 {
+  background-color: brown;
+  flex:1;
+  flex-basis:30px
+}
+.item2 {
+  background-color: aqua;
+  flex:3
+}
+.item3 {
+  background-color: blueviolet;
+}
+.item4 {
+  background-color: darkgreen;
+}
+.item11 {
+  background-color: rgb(177, 95, 19);
+}
+.item12 {
+  background-color: rgb(8, 1, 6);
+}
+.item13 {
+  background-color: rgb(130, 128, 133);
+}
+.item14 {
+  background-color: rgb(54, 30, 190);
+}
+
+.item21 {
+  background-color: brown;
+}
+.item22 {
+  background-color: aqua;
+}
+.item23 {
+  background-color: blueviolet;
+}
+.item24 {
+  background-color: darkgreen;
+}
+.item211 {
+  background-color: rgb(177, 95, 19);
+}
+.item212 {
+  background-color: rgb(8, 1, 6);
+}
+.item213 {
+  background-color: rgb(130, 128, 133);
+}
+.item214 {
+  background-color: rgb(54, 30, 190);
+}
+
+.item31 {
+  background-color: brown;
+}
+.item32 {
+  background-color: aqua;
+}
+.item33 {
+  background-color: blueviolet;
+  flex-shrink: 4;
+}
+.item34 {
+  background-color: darkgreen;
+  flex-shrink: 4;
+}
+.item311 {
+  background-color: rgb(177, 95, 19);
+  flex-shrink: 4;
+}
+.item312 {
+  background-color: rgb(8, 1, 6);
+}
+.item313 {
+  background-color: rgb(130, 128, 133);
+  flex-shrink: 4;
+}
+.item314 {
+  background-color: rgb(54, 30, 190);
+  flex-shrink: 4;
 }

@@ -1,0 +1,27 @@
+.bill-header {
+    background-color: grey;
+    display: flex;
+    width: 40rem;
+    color: white;
+    margin-left: 4rem;
+    margin-top: 2rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: space-around;
+}
+.header-item{
+
+}
+table{
+    margin-left: 4rem;
+}
+th,td{
+    border-left: black solid 1px;
+    padding: 10px;
+}
+.tot{
+    border-top: solid black 1px;
+    text-align: end;
+    padding-right: 80px;
+}
+
