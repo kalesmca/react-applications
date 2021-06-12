@@ -24,25 +24,28 @@
 
 // export default App;
 
-import logo from './logo.svg';
-import './App.css';
-import CustomBoxes from './components/box.test'
-import ContainerComponent from './components/container';
-import HeaderComponent from './components/header';
+import "./App.css";
+import CustomBoxes from "./components/box.test";
+import store from "./redux/store";
+import { Provider } from "react-redux";
+
+import ContainerComponent from "./components/container";
+import HeaderComponent from "./components/header";
 
 function App() {
   return (
-    <div>
-      {/* <CustomBoxes /> */}
+    <Provider store={store}>
       <div>
-        <HeaderComponent />
+        {/* <CustomBoxes /> */}
+        <div>
+          <HeaderComponent />
+        </div>
+        <div>
+          <ContainerComponent />
+        </div>
       </div>
-      <div>
-        <ContainerComponent />
-      </div>
-    </div>
+    </Provider>
   );
 }
 
 export default App;
-

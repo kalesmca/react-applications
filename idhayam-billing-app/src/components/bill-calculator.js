@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
-import PRODUCT_LIST from "../data/product.json";
 import Select from "react-select";
 import "../styles/bill-calculator.css";
+import { useSelector, useDispatch } from "react-redux";
+import {addBillItem} from './../redux/actions/billing';
+
 
 const BillCalculatorComponent = () => {
+  const dispatch = useDispatch();
+  const applicationState = useSelector((state) => state);
+
+  console.log('applciation state :', applicationState);
+  const productList = applicationState.products.productList
+
   const initialState = {
     qty: 0,
     price: null,
@@ -11,12 +19,12 @@ const BillCalculatorComponent = () => {
     selectedProductObj: null,
     id: null,
   };
-  const [itemList, setItems] = useState([]);
+  const itemList = applicationState.billing.itemList
+  // const [itemList, setItems] = useState([]);
   const [itemObj, setItemObj] = useState(initialState);
 
   useEffect(() => {
     console.log("item obj :", itemObj);
-    console.log("product list :", PRODUCT_LIST);
     console.log("items :", itemList);
   });
   const handleChange = (data) => {
@@ -32,23 +40,30 @@ const BillCalculatorComponent = () => {
   };
 
   const addItem = () => {
-    setItems([...itemList, itemObj]);
+    // setItems([...itemList, itemObj]);
+    dispatch(addBillItem(itemObj))
+
     setItemObj({ ...itemObj, ...initialState });
   };
 
   const editItem = (index) => {
-    setItemObj({
-      qty: itemList[index].qty,
-      amt: itemList[index].amt,
-      price: itemList[index].price,
-      selectedProductObj: itemList[index].selectedProductObj,
-      id: itemList[index].id,
-    });
-    setItems(
-      itemList.filter((item) => {
-        return item.id != itemList[index].id;
-      })
-    );
+    // setItemObj({
+    //   qty: itemList[index].qty,
+    //   amt: itemList[index].amt,
+    //   price: itemList[index].price,
+    //   selectedProductObj: itemList[index].selectedProductObj,
+    //   id: itemList[index].id,
+    // });
+    // removeItem(index)
+  };
+
+  const removeItem = (index) => {
+    
+    // setItems(
+    //   itemList.filter((item) => {
+    //     return item.id != itemList[index].id;
+    //   })
+    // );
   };
 
   return (
@@ -84,7 +99,9 @@ const BillCalculatorComponent = () => {
                     >
                       Edit
                     </button>
-                    <button>-</button>
+                    <button onClick={() => {
+                        removeItem(itemIndex);
+                      }} >-</button>
                   </td>
                 </tr>
               );
@@ -98,7 +115,7 @@ const BillCalculatorComponent = () => {
                   onChange={(e) => {
                     handleChange(e);
                   }}
-                  options={PRODUCT_LIST}
+                  options={productList}
                 />
               </td>
               <td>
