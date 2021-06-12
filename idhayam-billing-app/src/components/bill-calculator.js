@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import "../styles/bill-calculator.css";
 import { useSelector, useDispatch } from "react-redux";
-import {addBillItem} from './../redux/actions/billing';
+import {addBillItem, removeBillItem} from './../redux/actions/billing';
 
 
 const BillCalculatorComponent = () => {
@@ -41,29 +41,26 @@ const BillCalculatorComponent = () => {
 
   const addItem = () => {
     // setItems([...itemList, itemObj]);
-    dispatch(addBillItem(itemObj))
-
+    
+    dispatch(addBillItem(applicationState.billing, itemObj))
     setItemObj({ ...itemObj, ...initialState });
   };
 
   const editItem = (index) => {
-    // setItemObj({
-    //   qty: itemList[index].qty,
-    //   amt: itemList[index].amt,
-    //   price: itemList[index].price,
-    //   selectedProductObj: itemList[index].selectedProductObj,
-    //   id: itemList[index].id,
-    // });
-    // removeItem(index)
+    setItemObj({
+      qty: itemList[index].qty,
+      amt: itemList[index].amt,
+      price: itemList[index].price,
+      selectedProductObj: itemList[index].selectedProductObj,
+      id: itemList[index].id,
+    });
+    dispatch(removeBillItem(itemList, index))
   };
 
   const removeItem = (index) => {
     
-    // setItems(
-    //   itemList.filter((item) => {
-    //     return item.id != itemList[index].id;
-    //   })
-    // );
+    dispatch(removeBillItem(itemList, index))
+
   };
 
   return (

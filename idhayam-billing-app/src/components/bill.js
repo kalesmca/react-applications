@@ -1,36 +1,14 @@
 import React from 'react';
 import "../styles/bill.css";
+import {useSelector} from 'react-redux';
 
-const dataList = [
-    {
-        pName:"Idhayam 5L",
-        id: "I3",
-        price: 700,
-        labelName:"இதயம் 5லிட்டர்",
-        qty: 5,
-        totalAmt : 3500
-    },
-    {
-        pName:"Idhayam 2L",
-        id: "I2",
-        price: 700,
-        labelName:"இதயம் 2லிட்டர்",
-        qty: 5,
-        totalAmt : 3500
-    },
-    {
-        pName:"Idhayam 5L",
-        id: "I4",
-        price: 700,
-        labelName:"இதயம் 1லிட்டர்",
-        qty: 5,
-        totalAmt : 3500
-    },
-    
-    
-];
+
 
 const BillComponent = props => {
+    const applicationState = useSelector(state=>state)
+    const dataList = applicationState.billing.itemList;
+    const totalAmt = applicationState.billing.totalAmount;
+
     return(
         <div >
             <div className="bill-header"> 
@@ -79,19 +57,19 @@ const BillComponent = props => {
                                         {data.price}
                                     </td>
                                     <td>
-                                        {data.labelName}
+                                        {data.selectedProductObj.label}
                                     </td>
                                     <td>
                                         {data.qty}
                                     </td>
                                     <td>
-                                        {data.totalAmt}
+                                        {data.amt}
                                     </td>
                                 </tr>
                             )
                         })}
                         <tr >
-                            <td colSpan="4" className="tot"> 5000</td>
+                            <td colSpan="4" className="tot"> {totalAmt}</td>
                         </tr>
                     </tbody>
                 </table>
