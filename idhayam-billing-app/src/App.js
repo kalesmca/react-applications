@@ -31,19 +31,28 @@ import { Provider } from "react-redux";
 
 import ContainerComponent from "./components/container";
 import HeaderComponent from "./components/header";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import OrderSummaryComponent from "./components/order-summary";
+
 
 function App() {
   return (
     <Provider store={store}>
-      <div>
-        {/* <CustomBoxes /> */}
-        <div>
-          <HeaderComponent />
-        </div>
-        <div>
-          <ContainerComponent />
-        </div>
-      </div>
+    <Router>
+    <div>
+            <HeaderComponent />
+          </div>
+      <Switch>
+        
+        <Route exact exact path= "/" >
+            <ContainerComponent />
+        </Route>
+        <Route exact  path= "/table" >
+            <OrderSummaryComponent />
+        </Route>
+      </Switch>
+    </Router>
+     
     </Provider>
   );
 }
