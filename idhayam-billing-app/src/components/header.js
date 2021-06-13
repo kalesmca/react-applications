@@ -6,11 +6,11 @@ const HeaderComponent = props => {
     return (
         <div className="header-container">
         <Link to="/" className="header-items">Home</Link>
-        <Link to="/table" className="header-items">Summary-Table</Link>
+        <Link to="/order-summary" className="header-items">Summary-Table</Link>
 
-        <Link to="/" className="header-items">Product-Price</Link>
+        <Link to="/products" className="header-items">Product-Price</Link>
 
-        <Link to="/" className="header-items">Stocks</Link>
+        <Link to="/customers" className="header-items">Customers</Link>
 
            
         </div>

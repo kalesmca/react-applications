@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import "../styles/bill.css";
 import {useSelector} from 'react-redux';
 
@@ -8,26 +8,33 @@ const BillComponent = props => {
     const applicationState = useSelector(state=>state)
     const dataList = applicationState.billing.itemList;
     const totalAmt = applicationState.billing.totalAmount;
-
+    
+    const customerInfo =applicationState.billing.consumerInfo;
+    useEffect(()=>{
+        console.log('bill appState:', applicationState)
+    })
     return(
         <div >
             <div className="bill-header"> 
                 <div>
                      <div> Sarvanakumar Trader </div>
                         <div>Muhavoor</div>
+                        <div>Mobile: 9790313080</div>
                     
                 </div>
-                <div>
+                {customerInfo? <div>
                 
                     <div>
-                        ஆறுமுகசாமி பலசரக்கு கடை 
+                    {customerInfo.label} 
                     </div>
                     <div>
-                        தளவாய்புரம் 
+                        {customerInfo.address} 
                     </div>
+                    <div>Mobile: {customerInfo.mobile}</div>
+
                 
                     
-                </div>
+                </div>: ""}
                 {/* <div>Date : 20/05/2021</div> */}
              </div>
             <div >
@@ -69,7 +76,8 @@ const BillComponent = props => {
                             )
                         })}
                         <tr >
-                            <td colSpan="4" className="tot"> {totalAmt}</td>
+                            <td colSpan="3" className="tot">Total Amount: </td>
+                            <td  className="tot"> {totalAmt}</td>
                         </tr>
                     </tbody>
                 </table>

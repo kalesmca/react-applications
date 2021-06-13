@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import "../styles/bill-calculator.css";
 import { useSelector, useDispatch } from "react-redux";
-import {addBillItem, removeBillItem} from './../redux/actions/billing';
-
+import {
+  addBillItem,
+  removeBillItem,
+  updateBillCustomer,
+} from "./../redux/actions/billing";
 
 const BillCalculatorComponent = () => {
   const dispatch = useDispatch();
   const applicationState = useSelector((state) => state);
 
-  console.log('applciation state :', applicationState);
-  const productList = applicationState.products.productList
+  console.log("applciation state :", applicationState);
+  const productList = applicationState.products.productList;
+  const customerList = applicationState.customers.customerList;
+  const consumerInfo = applicationState.billing.consumerInfo;
 
   const initialState = {
     qty: 0,
@@ -19,7 +24,7 @@ const BillCalculatorComponent = () => {
     selectedProductObj: null,
     id: null,
   };
-  const itemList = applicationState.billing.itemList
+  const itemList = applicationState.billing.itemList;
   // const [itemList, setItems] = useState([]);
   const [itemObj, setItemObj] = useState(initialState);
 
@@ -39,10 +44,14 @@ const BillCalculatorComponent = () => {
     });
   };
 
+  const selectCustomer = (data) => {
+    dispatch(updateBillCustomer(data));
+  };
+
   const addItem = () => {
     // setItems([...itemList, itemObj]);
-    
-    dispatch(addBillItem(applicationState.billing, itemObj))
+
+    dispatch(addBillItem(applicationState.billing, itemObj));
     setItemObj({ ...itemObj, ...initialState });
   };
 
@@ -54,13 +63,11 @@ const BillCalculatorComponent = () => {
       selectedProductObj: itemList[index].selectedProductObj,
       id: itemList[index].id,
     });
-    dispatch(removeBillItem(itemList, index))
+    dispatch(removeBillItem(itemList, index));
   };
 
   const removeItem = (index) => {
-    
-    dispatch(removeBillItem(itemList, index))
-
+    dispatch(removeBillItem(itemList, index));
   };
 
   return (
@@ -68,6 +75,15 @@ const BillCalculatorComponent = () => {
       {" "}
       Bill calculation
       <div>
+        <div style={{width:"20rem"}}>
+          <Select
+            value={consumerInfo}
+            onChange={(e) => {
+              selectCustomer(e)
+            }}
+            options={customerList}
+          />
+        </div>
         <table style={{ width: "80rem" }}>
           <thead>
             <tr>
@@ -96,9 +112,13 @@ const BillCalculatorComponent = () => {
                     >
                       Edit
                     </button>
-                    <button onClick={() => {
+                    <button
+                      onClick={() => {
                         removeItem(itemIndex);
-                      }} >-</button>
+                      }}
+                    >
+                      -
+                    </button>
                   </td>
                 </tr>
               );

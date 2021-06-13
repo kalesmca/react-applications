@@ -1,4 +1,4 @@
-    import {ADD_BILL_ITEM, EDIT_BILL_ITEM, REMOVE_BILL_ITEM} from '../../constants/actions';
+    import {ADD_BILL_ITEM, UPDATE_BILL_CUSTOMER, REMOVE_BILL_ITEM} from '../../constants/actions';
 
     export const addBillItem = (billingState, billData) => {
         let tempState = {...billingState}
@@ -12,9 +12,13 @@
     }
 
     export const removeBillItem = (billItemList, index) => {
-        debugger
+        
         const newItemList = billItemList.filter((item)=>{return item.id !== billItemList[index].id})
         return { type: REMOVE_BILL_ITEM, payload: newItemList}
+    }
+
+    export const updateBillCustomer = (customerInfo) => {
+        return {type:UPDATE_BILL_CUSTOMER, payload:customerInfo}
     }
 
     // export const updateBillItem = ()

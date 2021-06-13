@@ -33,6 +33,8 @@ import ContainerComponent from "./components/container";
 import HeaderComponent from "./components/header";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import OrderSummaryComponent from "./components/order-summary";
+import ProductComponent from "./components/products";
+import CustomerComponent from "./components/customers";
 
 
 function App() {
@@ -47,8 +49,14 @@ function App() {
         <Route exact exact path= "/" >
             <ContainerComponent />
         </Route>
-        <Route exact  path= "/table" >
+        <Route exact  path= "/order-summary" >
             <OrderSummaryComponent />
+        </Route>
+        <Route exact  path= "/customers" >
+            <CustomerComponent />
+        </Route>
+        <Route exact  path= "/products" >
+            <ProductComponent />
         </Route>
       </Switch>
     </Router>
