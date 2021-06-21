@@ -49,6 +49,9 @@ function App() {
         <Route exact exact path= "/" >
             <ContainerComponent />
         </Route>
+        <Route exact path= "/bill/:billId" >
+            <ContainerComponent />
+        </Route>
         <Route exact  path= "/order-summary" >
             <OrderSummaryComponent />
         </Route>

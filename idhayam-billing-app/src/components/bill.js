@@ -51,7 +51,7 @@ const BillComponent = props => {
                                 Quantity
                             </th>
                             <th>
-                                Total Amount
+                                Amount
                             </th>
                         </tr>
                         

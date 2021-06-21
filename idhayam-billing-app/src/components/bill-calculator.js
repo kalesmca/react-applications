@@ -6,7 +6,12 @@ import {
   addBillItem,
   removeBillItem,
   updateBillCustomer,
+  setBill,
+  resetCurrentBill,
+  setApplicationState
 } from "./../redux/actions/billing";
+import {submitBill} from '../redux/actions/orders';
+import {useParams} from 'react-router-dom';
 
 const BillCalculatorComponent = () => {
   const dispatch = useDispatch();
@@ -16,7 +21,7 @@ const BillCalculatorComponent = () => {
   const productList = applicationState.products.productList;
   const customerList = applicationState.customers.customerList;
   const consumerInfo = applicationState.billing.consumerInfo;
-
+  const { billId } = useParams();
   const initialState = {
     qty: 0,
     price: null,
@@ -27,11 +32,21 @@ const BillCalculatorComponent = () => {
   const itemList = applicationState.billing.itemList;
   // const [itemList, setItems] = useState([]);
   const [itemObj, setItemObj] = useState(initialState);
+  //  if(billId){
+  //     dispatch(setBill(billId, applicationState.orders.billList))
+  //   } else {
+  //     dispatch(resetCurrentBill())
+  //   }
 
   useEffect(() => {
     console.log("item obj :", itemObj);
     console.log("items :", itemList);
+    console.log("bill id:", billId)
+   
   });
+  useEffect(()=>{
+    dispatch(setApplicationState())
+  },[])
   const handleChange = (data) => {
     console.log("data :", data);
     setItemObj({
@@ -69,6 +84,10 @@ const BillCalculatorComponent = () => {
   const removeItem = (index) => {
     dispatch(removeBillItem(itemList, index));
   };
+
+  const saveBill = () => {
+    dispatch(submitBill(applicationState.billing))
+  }
 
   return (
     <div>
@@ -164,6 +183,9 @@ const BillCalculatorComponent = () => {
             </tr>
           </tbody>
         </table>
+      </div>
+      <div>
+        <button onClick={()=>{saveBill()}}>Submit</button>
       </div>
     </div>
   );
