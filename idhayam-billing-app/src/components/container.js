@@ -6,6 +6,7 @@ import BillCalculatorComponent from './bill-calculator';
 import BillComponent from './bill';
 
 const ContainerComponent = props => {
+    console.log('props:', props)
     const componentRef = useRef();
     return (
         <div className="outer">Container

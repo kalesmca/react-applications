@@ -1,0 +1,7 @@
+[
+    {"title":"Apple", "type": "Fruits", "price":200, "image_url":""},
+    {"title":"Orange", "type": "Fruits", "price":100, "image_url":""},
+    {"title":"Jack Fruit", "type": "Fruits", "price":80, "image_url":""},
+    {"title":"pomegranates", "type": "Fruits", "price":150, "image_url":""},
+    {"title":"Gua", "type": "Fruits", "price":70, "image_url":""}
+]
