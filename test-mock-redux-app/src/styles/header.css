@@ -1,0 +1,31 @@
+.site-header{
+    display:flex;
+    height: 5rem;
+    width: 100%;
+    background-color: gray;
+    border: 1px;
+    padding: .5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.img-cont{
+    height: 4rem;
+}
+
+.header-item{
+
+}
+
+.header-item1{
+    
+}
+.header-item2{
+    flex-grow: 1;
+}
+.header-item3{
+    display: flex;
+}
+.icon-cont{
+    padding: 1rem;
+}
+
