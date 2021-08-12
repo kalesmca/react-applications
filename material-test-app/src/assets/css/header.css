@@ -1,0 +1,33 @@
+.logo{
+    height: 4rem;
+}
+.header-container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.blk-itm{
+    flex-grow: 1;
+}
+.nav-list{
+    display: flex;
+}
+.nav-item{
+    padding:1rem
+}
+.notification-value{
+    top: 2px;
+    color: #FFF;
+    /* right: 4px; */
+    border: 1px solid #FFF;
+    height: 16px;
+    display: block;
+    position: absolute;
+    font-size: 9px;
+    min-width: 16px;
+    background: #f44336;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 10px;
+    vertical-align: middle;
+}
