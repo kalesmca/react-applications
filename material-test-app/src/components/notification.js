@@ -60,10 +60,10 @@ export default function NotificationMenu() {
         aria-haspopup="true"
         variant="contained"
         color="green"
-        onClick={handleClick}
+        onClick={handleClick} /
       >
-        Open Menu
-      </Notifications>
+        
+      
       <span className="notification-value">5</span>
       <StyledMenu
         id="customized-menu"

@@ -31,3 +31,6 @@
     border-radius: 10px;
     vertical-align: middle;
 }
+.profile-menu{
+    display: flex;
+}
