@@ -13,8 +13,13 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import FavoriteBorderSharp from '@material-ui/icons/FavoriteBorderSharp';
+import FavoriteSharp from '@material-ui/icons/FavoriteSharp';
+import PersonOutlineSharp from '@material-ui/icons/PersonOutlineSharp';
+import CardGiftcardSharp from '@material-ui/icons/CardGiftcardSharp'
+
+
+import Speed from '@material-ui/icons/Speed';
 import HeaderContainer from './header-container';
 import DashboardContainer from './dashboard-container';
 
@@ -125,12 +130,34 @@ export default function LayoutContainer() {
         </div>
         <Divider />
         <List>
-          {sideNavList.map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          
+            <ListItem button>
+              <ListItemIcon> <Speed /> </ListItemIcon>
+              <ListItemText primary={"Dashboard"} />
+              {/* <ListItemIcon> <FavoriteBorderSharp/> </ListItemIcon> */}
+              
+              
             </ListItem>
-          ))}
+            <ListItem button>
+              <ListItemIcon> <FavoriteSharp /> </ListItemIcon>
+              <ListItemText primary={"Favorite"} />
+              {/* <ListItemIcon> <FavoriteSharp/> </ListItemIcon> */}
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <PersonOutlineSharp /> </ListItemIcon>
+              <ListItemText primary={"Client 360"} />
+              <ListItemIcon> <FavoriteBorderSharp/> </ListItemIcon>
+              
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon> <CardGiftcardSharp /> </ListItemIcon>
+              <ListItemText primary={"Greetings"} />
+              <ListItemIcon> <FavoriteBorderSharp/> </ListItemIcon>
+              
+              
+            </ListItem>
+           
+         
         </List>
         <Divider />
         {/* <List>
