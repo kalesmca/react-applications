@@ -16,12 +16,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteBorderSharp from '@material-ui/icons/FavoriteBorderSharp';
 import FavoriteSharp from '@material-ui/icons/FavoriteSharp';
 import PersonOutlineSharp from '@material-ui/icons/PersonOutlineSharp';
-import CardGiftcardSharp from '@material-ui/icons/CardGiftcardSharp'
-
+import CardGiftcardSharp from '@material-ui/icons/CardGiftcardSharp';
+import { Route, Redirect, Switch, Link } from 'react-router-dom';
 
 import Speed from '@material-ui/icons/Speed';
-import HeaderContainer from './header-container';
-import DashboardContainer from './dashboard-container';
+import HeaderContainer from '../header/header-container';
+import DashboardContainer from '../dashboard/dashboard-container';
+import FavoritesContainer from '../favorites/favorites-container';
+import IconBreadcrumbs from '../../shared/components/breadcrumbs';
 
 const drawerWidth = 240;
 const sideNavList = ['Dashboard', "Favorite", "Client360", "Greetings", "Files Sync and Share", "PII", "Managements", "Reports", "Pre Order Assessment", "Omni-channel Routing", "Payments"]
@@ -171,7 +173,21 @@ export default function LayoutContainer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <DashboardContainer />
+        <IconBreadcrumbs/>
+        <Switch>
+          <Route 
+            exact 
+            path="/" 
+            render ={()=> {
+              return(
+              <Redirect to="dashboard"/>
+              )
+            }}
+            >
+            </Route>
+            <Route path="/dashboard" component={DashboardContainer}/>
+            <Route path="/favorites" component={FavoritesContainer} />
+        </Switch>
       </main>
     </div>
   );

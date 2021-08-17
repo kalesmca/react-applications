@@ -4,14 +4,16 @@ import Toolbar from "@material-ui/core/Toolbar";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import clsx from "clsx";
-import standard_logo from "../assets/images/standard_logo.svg.png";
-import "../assets/css/header.css";
+import standard_logo from "../../assets/images/standard_logo.svg.png";
+import "../../assets/css/header.css";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
-import NotificationsNoneRounded from "@material-ui/icons/NotificationsNoneRounded";
-import NotificationMenu from "../components/notification";
-import ImageAvatars from "../components/avatar";
-import img_avatar from "../assets/images/img_avatar.png";
-import MenuListComposition from "../components/menu";
+import FeedbackOutlined from "@material-ui/icons/FeedbackOutlined";
+
+import NotificationMenu from "../../shared/components/notification";
+import ImageAvatars from "../../shared/components/avatar";
+import img_avatar from "../../assets/images/img_avatar.png";
+import MenuListComposition from "../../shared/components/menu";
+
 
 export default function HeaderContainer(props) {
   const classes = props.classes;
@@ -47,7 +49,7 @@ export default function HeaderContainer(props) {
                 <SearchOutlined />
               </div>
               <div className="nav-item">
-                <NotificationsNoneRounded />
+                <FeedbackOutlined />
               </div>
               <div className="nav-item">
                 <NotificationMenu />

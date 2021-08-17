@@ -1,9 +1,10 @@
 .logo{
-    height: 4rem;
+    height: 3rem;
 }
 .header-container{
     display: flex;
     flex-wrap: wrap;
+    height: 4rem;
 
 }
 .blk-itm{

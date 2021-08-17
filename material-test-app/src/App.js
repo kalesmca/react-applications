@@ -1,12 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import GridContainer from './containers/Grid';
-import HeaderContainer from './containers/header-container';
-import LayoutContainer from './containers/layout-container';
+import { BrowserRouter as Router } from 'react-router-dom';
+import LayoutContainer from './containers/layout/layout-container';
 function App() {
   return (
     <div>
+    <Router>
       <LayoutContainer/>
+      </Router>
     </div>
   );
 }

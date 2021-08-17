@@ -9,7 +9,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import SendIcon from "@material-ui/icons/Send";
 import Notifications from "@material-ui/icons/Notifications";
-import "../assets/css/header.css"
+import "../../assets/css/header.css"
 
 const StyledMenu = withStyles({
   paper: {
@@ -59,7 +59,7 @@ export default function NotificationMenu() {
         aria-controls="customized-menu"
         aria-haspopup="true"
         variant="contained"
-        color="green"
+        color="inherit"
         onClick={handleClick} /
       >
         
