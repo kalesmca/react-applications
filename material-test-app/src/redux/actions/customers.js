@@ -1,4 +1,4 @@
-import {GET_CUSTOMERS} from '../../constants/actions';
+import {GET_CUSTOMERS} from '../../shared/constants/actions';
 
 export const getCustomers = () => {
     

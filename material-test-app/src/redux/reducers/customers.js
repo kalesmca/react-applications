@@ -1,5 +1,5 @@
 import MOCK_CUSTOMER from '../../data/customer.json';
-import {GET_CUSTOMERS} from '../../constants/actions';
+import {GET_CUSTOMERS} from '../../shared/constants/actions';
 
 const initState = {
     customerList : MOCK_CUSTOMER,
