@@ -63,6 +63,7 @@ export default function TabsComponent(props) {
           value={value}
           onChange={handleChange}
           aria-label="simple tabs example"
+          
         >
           {props.tabItems.map((tabItem, itemIndex) => {
             return (
@@ -78,7 +79,6 @@ export default function TabsComponent(props) {
       {props.tabItems.map((tab, tabIndex) => {
         return (
           <TabPanel value={value} index={tabIndex} key={tabIndex}>
-            Item One = {tabIndex} = {tab.label}
             {tab.component !== "undefined"
               ? React.createElement(tab.component, {
                   key: tab.id,

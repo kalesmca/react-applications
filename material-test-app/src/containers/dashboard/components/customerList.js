@@ -1,19 +1,23 @@
 import React, {useEffect} from 'react';
-import DataTableComponent from '../../../shared/components/table';
+import {DataTableComponent} from '../../../shared/components/table';
 import { useSelector, useDispatch } from "react-redux";
 import getColumn from '../utils/table-utils.ts';
 
 const CustomerListComponent =(props) => {
     const columns = getColumn()
+    const applicationState = useSelector((state) => state);
+    const customerList = applicationState.customers.customerList;
     useEffect(()=>{
-        console.log('columnsss:', columns)
+        console.log('columnsss:', columns, applicationState)
     })
     const dispatch = useDispatch();
-  const applicationState = useSelector((state) => state);
   console.log('application state:', applicationState);
     return(
         <div>
-                <DataTableComponent />
+                <DataTableComponent 
+                    cols = {columns}
+                    rows = {customerList}
+                />
             
         </div>
     )
