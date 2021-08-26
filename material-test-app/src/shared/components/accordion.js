@@ -22,6 +22,7 @@ export default function AccordionComponent(props) {
   return (
     <div className={classes.root}>
     {props.accordionList.map((accordionItem) =>{
+      console.log('accrod item:', accordionItem)
         return(
             <Accordion>
         <AccordionSummary
@@ -32,10 +33,9 @@ export default function AccordionComponent(props) {
           <Typography className={classes.heading}>{accordionItem.label}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
-          </Typography>
+          {
+            React.createElement(accordionItem.component, accordionItem)
+          }
         </AccordionDetails>
       </Accordion>
         )
