@@ -69,14 +69,14 @@ const CustomerTransactionComponent = (props) => {
   const setRowData = (transactions) => {
     
     let tempDataList = transactions;
-    tempDataList.map((transaction) => {
+    return transactions.map((transaction) => {
       const tmpList = transactionList.filter(
         (item) => item.transactionType === transaction.transactionType
       );
       console.log("sepList:", tmpList);
       transaction.data = tmpList;
+      return transaction;
     });
-    return tempDataList;
   };
  
 
@@ -84,14 +84,12 @@ const CustomerTransactionComponent = (props) => {
     const newData  = setRowData(transactionTypes);
     console.log("after update :", newData);
     setTransactionTypes(newData)
-  });
+  },[]);
   return (
     <div>
-      {transactionTypes.data && transactionTypes.data.length ? (
+      
         <AccordionComponent accordionList={transactionTypes} />
-      ) : (
-        ""
-      )}
+     
     </div>
   );
 };

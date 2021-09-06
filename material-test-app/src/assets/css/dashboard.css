@@ -1,0 +1,28 @@
+.adoption-card{
+    display: flex;
+    width: 18rem;
+    height: 5rem;
+    border: 1px solid;
+    border-radius: 3px;
+}
+.card-side{
+    display: flex;
+    width: 5rem;
+    background-color: #ececec;
+    color: black;
+    /* font-size: large; */
+    font-weight: bold;
+    /* align-content: center; */
+    /* padding: 1rem; */
+    /* border: 1px solid; */
+    justify-content: center;
+    align-items: center;
+}
+
+.card-contente{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1rem;
+}
