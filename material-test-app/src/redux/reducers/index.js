@@ -1,11 +1,11 @@
-import customerReducer from "./customers";
-import transactionReducer from "./transaction";
+
+import postsReducer from './posts';
 
 import {combineReducers} from 'redux';
 
 const rootReducer = combineReducers({
-    customers:customerReducer,
-    transactions:transactionReducer
+    
+    posts: postsReducer
 })
 
 export default rootReducer;
