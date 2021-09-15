@@ -1,62 +1,88 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import '../../assets/css/shared.css';
-import CardHeader from '@material-ui/core/CardHeader';
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  Grid,
+  Typography,
+  CardHeader
+} from '@material-ui/core';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import MoneyIcon from '@material-ui/icons/Money';
+import { red } from '@material-ui/core/colors';
 
+const CardComponent = (props) => (
+  <Card
+    sx={{ height: '100%' }}
+    {...props}
+  >
 
-const useStyles = makeStyles({
-  root: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
- const CardComponent =(props)=> {
-   console.log('card props:',props)
-  const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
-  return (
-    <Card className={classes.root} className="card">
-      {props.data.header ? (<CardHeader
-        subheader={props.data.header.title}
-      ></CardHeader>) : ""}
-      {props.data.content? (<CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.data.content.desc}
+{props.data?.header ? (<CardHeader
+      subheader={props.data.header.title}
+    ></CardHeader>) : ""}
+    {
+      props.data?.body ?  (<CardContent>
+      <Grid
+        container
+        spacing={3}
+        sx={{ justifyContent: 'space-between' }}
+      >
+        <Grid item>
+          <Typography
+            color="textSecondary"
+            gutterBottom
+            variant="h6"
+          >
+            {props.data.body.content}
+          </Typography>
+          <Typography
+            color="textPrimary"
+            variant="h3"
+          >
+          <ArrowUpwardIcon sx={{ color: red[900] }} />
+           {props.data.body.value}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Avatar
+            sx={{
+              backgroundColor: red[600],
+              height: 56,
+              width: 56
+            }}
+          >
+            <MoneyIcon />
+          </Avatar>
+        </Grid>
+      </Grid>
+      {/* <Box
+        sx={{
+          pt: 2,
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
+        <ArrowUpwardIcon sx={{ color: red[900] }} />
+        <Typography
+          sx={{
+            color: red[900],
+            mr: 1
+          }}
+          variant="body2"
+        >
+          12%
         </Typography>
-        {/* <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+        <Typography
+          color="textSecondary"
+          variant="caption"
+        >
+          Since last month
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography> */}
-      </CardContent>) :""}
-      {props.data.action ? (<CardActions>
-        <Button size="small">Learn More</Button>
-  </CardActions>):""}
-    </Card>
-  );
-}
+      </Box> */}
+    </CardContent>) : ""
+    }
+    
+  </Card>
+);
 
 export default CardComponent;
