@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ChartComponent from "./components/chartComponent";
 import GhostContentAPI from "@tryghost/content-api";
 import { Box, Container, Grid } from "@material-ui/core";
 import CardComponent from "../../shared/components/card";
 import { useSelector, useDispatch } from "react-redux";
 import { setPosts } from "../../redux/actions/posts.js";
 import { isTemplateExpression } from "typescript";
+import BarChartComponent from "../../shared/components/barChart";
 
 const DashboardContainer = (props) => {
   const dispatch = useDispatch();
@@ -102,6 +102,9 @@ const DashboardContainer = (props) => {
               })
             : ""}
         </Grid>
+        <div style={{marginTop: "2rem", width: "66rem"}}>
+          <BarChartComponent />
+        </div>
       </Container>
     </Box>
   );
