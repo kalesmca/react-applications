@@ -4,7 +4,6 @@ import { Box, Container, Grid } from "@material-ui/core";
 import CardComponent from "../../shared/components/card";
 import { useSelector, useDispatch } from "react-redux";
 import { setPosts } from "../../redux/actions/posts.js";
-import { isTemplateExpression } from "typescript";
 import BarChartComponent from "../../shared/components/barChart";
 import {getAuthourAndTags, getOrderdPosts, getChartData, getFormattedCardList} from './utils/dashboard-utils';
 

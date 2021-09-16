@@ -1,1 +1,0 @@
-export const MEMBER_TITLE = "Members List"
