@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPosts } from "../../redux/actions/posts.js";
 import { isTemplateExpression } from "typescript";
 import BarChartComponent from "../../shared/components/barChart";
+import {getAuthourAndTags, getOrderdPosts, getChartData} from './utils/dashboard-utils';
 
 const DashboardContainer = (props) => {
   const dispatch = useDispatch();
@@ -21,35 +22,7 @@ const DashboardContainer = (props) => {
     version: "v3",
   });
   
-  const getAuthourAndTags = (list) => {
-    let obj = {
-      authList: [],
-      tagList:[]
-    }
-    
-    let allAuthors = [];
-    let allTags = [];
-    list.map((post) => {
-      allAuthors = [...allAuthors, ...post.authors];
-      allTags = [...allTags, ...post.tags];
-    });
-
-    obj.authList = allAuthors.reduce((unique, o) => {
-      if (!unique.some((obj) => obj.id === o.id)) {
-        unique.push(o);
-      }
-      return unique;
-    }, []);
-
-    obj.tagList = allTags.reduce((unique, o) => {
-      if (!unique.some((obj) => obj.id === o.id)) {
-        unique.push(o);
-      }
-      return unique;
-    }, []);
-
-    return obj;
-  };
+  
 
   useEffect(() => {
     if (appState.posts?.postList?.length) {
@@ -60,7 +33,7 @@ const DashboardContainer = (props) => {
         .then((res) => {
           postsState = {
             ...postsState,
-            postList: [...res],
+            postList: [...getOrderdPosts(res)],
             ...{ numberOfPostst: res.length }, ...{authorList : getAuthourAndTags(res).authList},
             ...{tagList : getAuthourAndTags(res).tagList}
           };
@@ -74,6 +47,7 @@ const DashboardContainer = (props) => {
               { body: { content: "Number of Tags", value:  postsState.tagList.length} },
             ],
           ]);
+          getChartData(res);
         })
         .catch((err) => {
           console.error(err);
@@ -102,9 +76,12 @@ const DashboardContainer = (props) => {
               })
             : ""}
         </Grid>
-        <div style={{marginTop: "2rem", width: "66rem"}}>
-          <BarChartComponent />
-        </div>
+        {
+          postsState.postList.length ? (<div style={{marginTop: "2rem", width: "66rem"}}>
+          <BarChartComponent  chartData={getChartData(postsState.postList)}/>
+        </div>) : ""
+        }
+        
       </Container>
     </Box>
   );

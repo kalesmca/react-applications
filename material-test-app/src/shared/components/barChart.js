@@ -20,19 +20,19 @@ const data = [
   { year: '2010', population: 6.930 },
 ];
 
-const  BarChartComponent = () => {
- 
+const  BarChartComponent = (props) => {
+    console.log('chart props:', props)
     return (
       <Paper>
         <Chart
-          data={data}
+          data={props.chartData}
         >
           <ArgumentAxis />
           <ValueAxis max={7} />
 
           <BarSeries
-            valueField="population"
-            argumentField="year"
+            valueField="posts"
+            argumentField="month"
           />
           <Title text="Posts per month" />
           <Animation />
