@@ -3,7 +3,7 @@ import { makeStyles} from '@material-ui/core/styles';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { Route, Redirect, Switch, Link } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 import HeaderContainer from '../header/header-container';
 import DashboardContainer from '../dashboard/dashboard-container';
@@ -75,19 +75,12 @@ const useStyles = makeStyles((theme) => ({
 export default function LayoutContainer() {
   const classes = useStyles();
 
- 
-
- 
-
   return (
     <div className={classes.root}>
       <CssBaseline />
       <HeaderContainer 
-          
           classes={classes}
-         
       />
-      
       
       <main className={classes.content}>
         <div className={classes.toolbar} />
