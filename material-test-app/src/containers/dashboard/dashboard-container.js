@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPosts } from "../../redux/actions/posts.js";
 import { isTemplateExpression } from "typescript";
 import BarChartComponent from "../../shared/components/barChart";
-import {getAuthourAndTags, getOrderdPosts, getChartData} from './utils/dashboard-utils';
+import {getAuthourAndTags, getOrderdPosts, getChartData, getFormattedCardList} from './utils/dashboard-utils';
 
 const DashboardContainer = (props) => {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ const DashboardContainer = (props) => {
             ...postsState,
             postList: [...getOrderdPosts(res)],
             ...{ numberOfPostst: res.length }, ...{authorList : getAuthourAndTags(res).authList},
-            ...{tagList : getAuthourAndTags(res).tagList}
+            ...{tagList : getAuthourAndTags(res).tagList}, ...{cardList: getFormattedCardList(res)}
           };
           
           dispatch(setPosts(postsState));
@@ -81,6 +81,18 @@ const DashboardContainer = (props) => {
           <BarChartComponent  chartData={getChartData(postsState.postList)}/>
         </div>) : ""
         }
+
+        <Grid container spacing={3}>
+          {postsState.cardList.length
+            ? postsState.cardList.map((card, cardIndex) => {
+                return (
+                  <Grid item lg={3} sm={6} xl={3} xs={12} key={cardIndex}>
+                    <CardComponent data={card} />
+                  </Grid>
+                );
+              })
+            : ""}
+        </Grid>
         
       </Container>
     </Box>

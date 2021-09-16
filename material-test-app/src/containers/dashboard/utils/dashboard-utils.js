@@ -57,3 +57,20 @@ export const getAuthourAndTags = (list) => {
       console.log(obj, chartData)
       return chartData;
   }
+
+  export const getFormattedCardList = (posts) =>{
+      let cards= [];
+    posts.forEach((post) =>{
+        cards.push(
+            {
+                header:{
+                    title: post.title
+                }, 
+                body:{
+                    content: post.custom_excerpt
+                }
+            }
+        )
+    })
+    return cards;
+  }
