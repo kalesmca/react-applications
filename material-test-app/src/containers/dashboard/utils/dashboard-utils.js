@@ -67,7 +67,8 @@ export const getAuthourAndTags = (list) => {
                     title: post.title
                 }, 
                 body:{
-                    content: post.custom_excerpt
+                    content: post.custom_excerpt,
+                    isIconDisabled: true
                 }
             }
         )

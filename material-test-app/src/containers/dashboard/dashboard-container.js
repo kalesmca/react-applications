@@ -83,13 +83,16 @@ const DashboardContainer = (props) => {
         }
 
         <Grid container spacing={3}>
-          {postsState.cardList.length
+          {postsState?.cardList?.length
             ? postsState.cardList.map((card, cardIndex) => {
+              if(cardIndex<5) {
                 return (
                   <Grid item lg={3} sm={6} xl={3} xs={12} key={cardIndex}>
                     <CardComponent data={card} />
                   </Grid>
                 );
+              }
+               
               })
             : ""}
         </Grid>

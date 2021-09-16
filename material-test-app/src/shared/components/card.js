@@ -35,15 +35,17 @@ const CardComponent = (props) => (
           >
             {props.data.body.content}
           </Typography>
-          <Typography
+          {!props.data.body.isIconDisabled ? 
+          (<Typography
             color="textPrimary"
             variant="h3"
           >
           <ArrowUpwardIcon sx={{ color: red[900] }} />
            {props.data.body.value}
-          </Typography>
+          </Typography>):""
+          }
         </Grid>
-        <Grid item>
+       {!props.data.body.isIconDisabled ? (<Grid item>
           <Avatar
             sx={{
               backgroundColor: red[600],
@@ -53,7 +55,7 @@ const CardComponent = (props) => (
           >
             <MoneyIcon />
           </Avatar>
-        </Grid>
+        </Grid>):"" }
       </Grid>
       {/* <Box
         sx={{
