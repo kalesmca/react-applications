@@ -28,6 +28,24 @@ const DashboardContainer = (props) => {
   useEffect(() => {
     if (appState.posts?.postList?.length) {
       console.log("need to set");
+      setDashboardCards((current) => [
+        ...current,
+        ...[
+          { body: { content: "Number of Posts", value: postsState.postList.length } },
+          {
+            body: {
+              content: "Number of Authors",
+              value: postsState.authorList.length,
+            },
+          },
+          {
+            body: {
+              content: "Number of Tags",
+              value: postsState.tagList.length,
+            },
+          },
+        ],
+      ]);
     } else {
       api.posts
         .browse({ include: "tags,authors" })
