@@ -13,7 +13,8 @@ export default function UserProvider(props){
     return(
         <UserContext.Provider
       value={{
-        userList
+        userList,
+        setUserList
       }}
     >
       {props.children}
