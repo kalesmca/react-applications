@@ -8,11 +8,11 @@ const initValue = {
 }
 
 export default function RegistrationComponent() {
-    const {setUserList} = useContext(UserContext);
+    const {userList, setUserList} = useContext(UserContext);
     const [user, setUser] = useState({})
 
     useEffect(()=>{
-        console.log('user:', user)
+        console.log('user:', user, userList)
     })
 
   return (
@@ -32,6 +32,7 @@ export default function RegistrationComponent() {
           <input type="text" className="form-control" id="age" value={user.age} onChange={(e)=>{setUser({age: e.target.value})}}/>
         </div>
       </form>
+      <button onClick={()=>{setUserList([...userList, ...[user]])}}>Save</button>
     </div>
   );
 }
