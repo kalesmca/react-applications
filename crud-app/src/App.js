@@ -21,6 +21,9 @@ function App() {
             <Route exact path="/show-all">
               <UserListComponent />
             </Route>
+            <Route exact path= "/user/:userId" >
+            <RegistrationComponent />
+        </Route>
           </Switch>
         </Router>
       </UserProvider>

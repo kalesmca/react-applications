@@ -1,5 +1,7 @@
 import React,{useContext, useState, useEffect} from "react";
 import { UserContext } from "../contexts/userContext";
+import {useParams} from 'react-router-dom';
+
 
 
 const initValue = {
@@ -9,11 +11,19 @@ const initValue = {
 
 export default function RegistrationComponent() {
     const {userList, setUserList} = useContext(UserContext);
+    const { userId } = useParams();
     const [user, setUser] = useState({})
+    
+    
+    
+
 
     useEffect(()=>{
-        console.log('user:', user, userList)
-    })
+        console.log('user:', user, userList, userId)
+        if(userId){
+          setUser(userList[userId])
+        }
+    },[])
 
   return (
     <div className="container">
@@ -25,14 +35,17 @@ export default function RegistrationComponent() {
       <form>
         <div className="form-group">
           <label for="usr">Name:</label>
-          <input type="text" className="form-control" id="usr" value={user.name} onChange={(e)=>{setUser({name: e.target.value})}}/>
+          <input type="text" className="form-control" id="usr" value={user.name} onChange={(e)=>{setUser({...user, name: e.target.value})}}/>
         </div>
         <div className="form-group">
           <label for="pwd">Age:</label>
-          <input type="text" className="form-control" id="age" value={user.age} onChange={(e)=>{setUser({age: e.target.value})}}/>
+          <input type="text" className="form-control" id="age" value={user.age} onChange={(e)=>{setUser({...user, age: e.target.value})}}/>
         </div>
       </form>
-      <button onClick={()=>{setUserList([...userList, ...[user]])}}>Save</button>
+      {
+        !userId? (<button onClick={()=>{setUserList([...userList, ...[user]])}}>Save</button>) : null
+      }
+      
     </div>
   );
 }
