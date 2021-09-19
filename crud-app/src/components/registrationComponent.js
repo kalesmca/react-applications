@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom';
 
 const initValue = {
     name:"",
-    age: null
+    age: ""
 }
 
 export default function RegistrationComponent() {
@@ -43,7 +43,7 @@ export default function RegistrationComponent() {
         </div>
       </form>
       {
-        !userId? (<button onClick={()=>{setUserList([...userList, ...[user]])}}>Save</button>) : null
+        !userId? (<button onClick={()=>{setUserList([...userList, ...[user]]); setUser(initValue)}}>Save</button>) : null
       }
       
     </div>
