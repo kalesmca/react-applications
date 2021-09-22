@@ -1,15 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import PaperComponent from './components/paper';
-import ButtonSizes from './components/button';
+import logo from "./logo.svg";
+import "./App.css";
 
+import { ThemeContexts } from "./contexts/theme-context";
+import LayoutComponent from "./components/layout";
 
 function App() {
   return (
-    <div className="">
-      <ButtonSizes/>
-    </div>
+      <LayoutComponent />
   );
 }
 
-export default App;
+export default App; 
