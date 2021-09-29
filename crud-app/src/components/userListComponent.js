@@ -32,6 +32,29 @@ export default function UserListComponent() {
     console.log('userList ::', userList)
   })
 
+  const data = [
+    { name: 'kaleeswaran', age: 22, id: 1 },
+    { name: 'Sundari', age: 21, id: 2 },
+    { name: 'Mani', age: 24, id: 3 },
+    { name: 'Saravanakumar', age: 22, id: 4 },
+    { name: 'Nandhini', age: 31, id: 5 },
+    { name: 'Porkodi', age: 54, id: 6 },
+    { name: 'Mariappan', age: 62, id: 7 },
+    { name: 'Pechiyammal', age: 28, id: 8 },
+    { name: 'Muthumanikkam', age: 29, id: 9 },
+    { name: 'Suresh', age: 29, id: 10 },
+    { name: 'Nithilan', age: 2, id: 11 },
+    { name: 'Niranjan', age: 4, id: 12 },
+    { name: 'Sahana', age: 2, id: 13 },
+    { name: 'ArjunRam', age: 1, id: 14 },
+    { name: 'MuthuMani', age: 24, id: 15 },
+  ]
+
+  const columnHeader = [
+    { label: 'Name', key: 'name' },
+    { label: 'Age', key: 'age' },
+  ];
+
   return (
     <div class="container">
       <h2>Basic Table</h2>
@@ -51,7 +74,7 @@ export default function UserListComponent() {
           {
            userList.length? userList.map((user, userIndex)=>{
               return (
-              <tr key={userIndex} onClick={()=>{history.push(`/user/${userIndex}`)}}>
+            <tr key={userIndex} onClick={()=>{history.push(`/user/${userIndex}`)}}>
             <td>{user.editFlag ? (<div><input type="text" value={user.name} onBlur={()=>{handleBlur()}} id="name" onChange={(e)=>{handleChange(e, userIndex)}} /></div>) : (<div>{user.name}</div>)} </td>
             <td>{user.editFlag ? (<div><input type="text" value={user.age} onBlur={()=>{handleBlur()}} id="age" onChange={(e)=>{handleChange(e, userIndex)}} /></div>) : (<div>{user.age}</div>)} </td>
 
@@ -64,6 +87,14 @@ export default function UserListComponent() {
           
         </tbody>
       </table>
+
+      My DataTable:
+      <div>
+      {/* <basic-table tableData={data} tableHeader={columnHeader}></basic-table> */}
+
+      {/* <my-component></my-component> */}
+        <data-table tableData={userList} tableHeader={columnHeader}></data-table>
+      </div>
     </div>
   );
 }
