@@ -11,13 +11,14 @@
 .app-container{
   height: 100%;
   width: 100%;
-
+  
 }
 
 .header-container{
   height: 8rem;
   width: 100%;
-
+  background-color: burlywood;
+  color: aliceblue;
   display: flex;
   justify-content: space-around;
   align-items: center;
