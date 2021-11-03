@@ -22,7 +22,7 @@ import RegistrationComponent from './registration';
 import UserListComponent from './userList';
 import { ChangeCircleOutlined } from '@mui/icons-material';
 import {useHistory} from "react-router-dom";
-
+import AddTaskComponent from '../containers/addTasks';
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
@@ -103,7 +103,7 @@ export default function LayoutComponent() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            Budget Manager
           </Typography>
         </Toolbar>
       </AppBar>
@@ -127,7 +127,7 @@ export default function LayoutComponent() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Registration', 'Show-all'].map((text, index) => (
+          {['Registration', 'Show-all', 'Add'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -153,6 +153,11 @@ export default function LayoutComponent() {
             <Route exact path= "/user/:userId" >
             <RegistrationComponent />
         </Route>
+        <Route exact path= "/add" >
+            <AddTaskComponent />
+        </Route>
+
+        
           </Switch>
         
       </Main>
