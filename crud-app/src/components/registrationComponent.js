@@ -36,6 +36,11 @@ export default function RegistrationComponent() {
       { name: 'ArjunRam', age: 1, id: 14 },
       { name: 'MuthuMani', age: 24, id: 15 },
     ];
+
+    const pagination = {
+      isPagination: true,
+      paginationLimitList: [5,10]
+    }
   
 
     
@@ -53,7 +58,7 @@ export default function RegistrationComponent() {
       <h2>Form control: input</h2>
 
 <div>
-<data-table data={JSON.stringify(data)} header = {JSON.stringify(columnHeader)}></data-table>
+<data-table data={JSON.stringify(data)} header = {JSON.stringify(columnHeader)}  pagination={JSON.stringify(pagination)}></data-table>
 
 </div>
 
