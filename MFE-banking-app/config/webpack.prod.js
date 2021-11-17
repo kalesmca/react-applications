@@ -12,10 +12,10 @@ const prodConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "registration",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./RegistrationApp": "./src/bootstrap.js",
+      name: "banking",
+      remotes:{
+        customers:"customers@http://localhost:6062/remoteEntry.js",
+        registration:"resgistration@http://localhost:6061/remoteEntry.js",
       },
       shared: packageJaon.dependencies,
     }),

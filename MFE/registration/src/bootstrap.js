@@ -6,7 +6,7 @@ import "./index.css";
 
 import App from "./app";
 
-const mount = (el, { theme, selectedCif }) => {
+const registrationMount = (el, { theme, selectedCif }) => {
   ReactDOM.render(<App theme={theme} selectedCif={selectedCif} />, el);
 };
 
@@ -15,9 +15,9 @@ if (process.env.NODE_ENV === "development") {
   const devRoot = document.querySelector("#accounts-dev-mode");
 
   if (devRoot) {
-    mount(devRoot, { theme: "default" });
+    registrationMount(devRoot, { theme: "default" });
   }
 }
 
 // for container/external app
-export { mount };
+export { registrationMount };

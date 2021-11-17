@@ -8,20 +8,18 @@ const packageJson = require("../package.json");
 const devConfig = {
   mode: "development",
   output: {
-    publicPath: "http://localhost:6061/",
+    publicPath: "http://localhost:3000/",
   },
   devServer: {
-    port: 6061,
-    historyApiFallback: {
-      index: "index.html",
-    },
+    port: 3000,
+    historyApiFallback: true
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "registration",
-      filename: "remoteEntry.js",
-      exposes: {
-        "./RegistrationApp": "./src/bootstrap.js",
+      name: "banking",
+      remotes:{
+        customers:"customers@http://localhost:6062/remoteEntry.js",
+        registration:"resgistration@http://localhost:6061/remoteEntry.js",
       },
       shared: packageJson.dependencies,
     }),
