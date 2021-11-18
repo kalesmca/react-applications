@@ -6,8 +6,8 @@ import "./index.css";
 
 import App from "./app";
 
-const customerListMount = (el, { theme }) => {
-  ReactDOM.render(<App theme={theme} />, el);
+const customerListMount = (el, obh) => {
+  ReactDOM.render(<App theme={obh.theme} customerList= {obh.customerList}/>, el);
 };
 
 // for stand alone

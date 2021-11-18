@@ -4,17 +4,7 @@ import {GET_CUSTOMERS} from '../constants/url';
 import "./index.css";
 
 const App = (props) =>{
-    const [customerList, setCustomerList] = useState([])
-    useEffect(()=>{
-        axios.get(GET_CUSTOMERS).then((customerRes)=>{
-            console.log('customer Res:', customerRes);
-            if(customerRes?.data){
-                setCustomerList(customerRes.data)
-
-            }
-        })
-    },[])
-
+    
     return(
         <div>Customer List 
             <div>
@@ -29,7 +19,7 @@ const App = (props) =>{
                     </thead>
                     <tbody>
                         {
-                            customerList.length ? customerList.map((customer, customerIndex) =>{
+                            props.customerList?.length ? props.customerList.map((customer, customerIndex) =>{
                                 return (
                                     <tr key={customerIndex}>
                                         <td>

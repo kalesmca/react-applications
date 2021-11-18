@@ -6,8 +6,8 @@ import "./index.css";
 
 import App from "./app";
 
-const registrationMount = (el, { theme }) => {
-  ReactDOM.render(<App theme={theme}  />, el);
+const registrationMount = (el, obh) => {
+  ReactDOM.render(<App theme={obh.theme} mine={obh.mine}  />, el);
 };
 
 // for stand alone

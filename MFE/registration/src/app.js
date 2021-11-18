@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios';
-import {SAVE_CUSTOMER} from '../constants/url';
+
 import "./index.css";
 const initValue = {
     name:"",
@@ -13,10 +12,9 @@ const App = (props) =>{
     console.log('props::', props)   
         const save = () =>{
             setObj({...obj, id: new Date().getTime() / 100000});
-            axios.post(SAVE_CUSTOMER, obj).then((res)=>{
-                console.log("Response:", res);
-                setObj(initValue)
-            })
+            props.mine(obj)
+            setObj(initValue)
+            
         }  
         return(
         <div>Registration 
