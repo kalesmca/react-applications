@@ -1,15 +1,15 @@
 {
-  "name": "customers",
+  "name": "customer-list",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --config config/webpack.dev.js",
     "dev-build": "rm -rf config/dev-dist && webpack --config config/webpack.devbuild.js",
-    "dev-build-serve": "live-server config/dev-dist/ --port=6062",
+    "dev-build-serve": "live-server config/dev-dist/ --port=4001",
     "build": "rm -rf dist && webpack --config config/webpack.prod.js",
-    "build-move": "rm -rf ../upload/6062/* && mkdir ../upload/6062/2 && cp -r ./dist/ ../upload/6062/",
-    "dev-move": "rm -rf ../upload/6062/2/* && cp -r ./config/dev-dist/* ../upload/6062/2/"
+    "build-move": "rm -rf ../upload/4001/* && mkdir ../upload/4001/1 && cp -r ./dist/ ../upload/4001/",
+    "dev-move": "rm -rf ../upload/4001/1/* && cp -r ./config/dev-dist/* ../upload/4001/1/"
   },
   "keywords": [],
   "author": "",
