@@ -7,3 +7,7 @@ npm i -D @babel/core @babel/plugin-transform-runtime @babel/preset-env @babel/pr
 dependencies
 
 npm i --save react react-dom react-router-dom sass-loader node-sass react-bootstrap bootstrap
+
+Run application
+
+npm run dev

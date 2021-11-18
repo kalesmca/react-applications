@@ -22,10 +22,10 @@ const App = (props) => {
         <div>
             <HeaderComponent />
             <div>
-                <div ref={registraiontRef}>
+                <div ref={registraiontRef} style={{margin:"2rem"}}>
 
                 </div>
-                <div ref={customerListRef}>
+                <div ref={customerListRef}  style={{margin:"2rem"}}>
 
                 </div>
             </div>
