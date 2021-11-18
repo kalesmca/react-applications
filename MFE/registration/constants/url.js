@@ -1,0 +1,1 @@
+export const SAVE_CUSTOMER = "http://localhost:3000/customerList"

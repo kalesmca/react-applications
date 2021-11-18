@@ -4,17 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config config/webpack.dev.js",
-    "dev-build": "rm -rf config/dev-dist && webpack --config config/webpack.devbuild.js",
-    "dev-build-serve": "live-server config/dev-dist/ --port=6061",
-    "build": "rm -rf dist && webpack --config config/webpack.prod.js",
-    "build-move": "rm -rf ../upload/6061/* && mkdir ../upload/6061/1 && cp -r ./dist/ ../upload/6061/",
-    "dev-move": "rm -rf ../upload/6061/1/* && cp -r ./config/dev-dist/* ../upload/6061/1/"
+    "dev": "webpack serve --config config/webpack.dev.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",

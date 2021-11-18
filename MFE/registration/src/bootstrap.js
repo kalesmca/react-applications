@@ -6,13 +6,13 @@ import "./index.css";
 
 import App from "./app";
 
-const registrationMount = (el, { theme, selectedCif }) => {
-  ReactDOM.render(<App theme={theme} selectedCif={selectedCif} />, el);
+const registrationMount = (el, { theme }) => {
+  ReactDOM.render(<App theme={theme}  />, el);
 };
 
 // for stand alone
 if (process.env.NODE_ENV === "development") {
-  const devRoot = document.querySelector("#accounts-dev-mode");
+  const devRoot = document.querySelector("#registration-dev-mode");
 
   if (devRoot) {
     registrationMount(devRoot, { theme: "default" });

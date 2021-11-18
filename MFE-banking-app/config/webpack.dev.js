@@ -8,10 +8,10 @@ const packageJson = require("../package.json");
 const devConfig = {
   mode: "development",
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:8080/",
   },
   devServer: {
-    port: 3000,
+    port: 8080,
     historyApiFallback: true
   },
   plugins: [
@@ -19,7 +19,7 @@ const devConfig = {
       name: "banking",
       remotes:{
         customers:"customers@http://localhost:6062/remoteEntry.js",
-        registration:"registration@http://localhost:6061/remoteEntry.js",
+        registration:"registration@http://localhost:4002/remoteEntry.js",
         customerList:"customerList@http://localhost:4001/remoteEntry.js",
 
       },

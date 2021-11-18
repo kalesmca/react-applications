@@ -4,12 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config config/webpack.dev.js",
-    "dev-build": "rm -rf config/dev-dist && webpack --config config/webpack.devbuild.js",
-    "dev-build-serve": "live-server config/dev-dist/ --port=6062",
-    "build": "rm -rf dist && webpack --config config/webpack.prod.js",
-    "build-move": "rm -rf ../upload/6062/* && mkdir ../upload/6062/2 && cp -r ./dist/ ../upload/6062/",
-    "dev-move": "rm -rf ../upload/6062/2/* && cp -r ./config/dev-dist/* ../upload/6062/2/"
+    "dev": "webpack serve --config config/webpack.dev.js"
   },
   "keywords": [],
   "author": "",

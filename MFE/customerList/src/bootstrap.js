@@ -6,8 +6,8 @@ import "./index.css";
 
 import App from "./app";
 
-const customerListMount = (el, { theme, selectedCif }) => {
-  ReactDOM.render(<App theme={theme} selectedCif={selectedCif} />, el);
+const customerListMount = (el, { theme }) => {
+  ReactDOM.render(<App theme={theme} />, el);
 };
 
 // for stand alone

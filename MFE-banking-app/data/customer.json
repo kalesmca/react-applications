@@ -1,0 +1,23 @@
+{
+  "customerList": [
+    {
+      "id": 1,
+      "name": "kalees",
+      "city": "Muhavoor",
+      "email": "kalesmca@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Sahana",
+      "city": "Sivakasi",
+      "email": "sahana@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Arun",
+      "city": "Sivakasi",
+      "email": "arun@gmail.com"
+    }
+    
+  ]
+}
