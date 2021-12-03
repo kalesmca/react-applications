@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "name": "Mono-Repo",
+  "scripts": {
+    "start" : "lerna run start",
+    "test":"lerna run test",
+    "diff": "lerna diff"
+  }
+}

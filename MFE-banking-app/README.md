@@ -11,3 +11,10 @@ npm i --save react react-dom react-router-dom sass-loader node-sass react-bootst
 Run application
 
 npm run dev
+
+
+Run server
+
+from data path
+
+json-server --watch customer.json
