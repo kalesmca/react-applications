@@ -16,7 +16,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App(props) {
   console.log('props::', props);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Application loaded : ", props.name);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Customer list Application loaded : ", props.name);
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);

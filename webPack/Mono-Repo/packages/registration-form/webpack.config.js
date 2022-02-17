@@ -46,7 +46,8 @@ module.exports = {
       name: "registration_app",
       filename: "remoteEntry.js",
       exposes: {
-        "./registrationForm": "./src/app.js"
+        "./registrationForm": "./src/app.js",
+        "./testApp": "./src/components/testApp.js"
       },
      
     }),

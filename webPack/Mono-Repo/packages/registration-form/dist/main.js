@@ -210,7 +210,7 @@
 /******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 					installedChunks[chunkId][0]();
 /******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 				installedChunks[chunkId] = 0;
 /******/ 			}
 /******/ 		
 /******/ 		}
@@ -225,6 +225,6 @@ var __webpack_exports__ = {};
 /*!******************!*\
   !*** ./index.js ***!
   \******************/
-Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_react-dom_index_js"), __webpack_require__.e("bootstrap_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap.js */ "./bootstrap.js"));
+Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_react_index_js"), __webpack_require__.e("vendors-node_modules_react-dom_index_js"), __webpack_require__.e("bootstrap_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ./bootstrap.js */ "./bootstrap.js"));
 /******/ })()
 ;

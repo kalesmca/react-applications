@@ -212,7 +212,7 @@ var customerList_app;
 /******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 					installedChunks[chunkId][0]();
 /******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 				installedChunks[chunkId] = 0;
 /******/ 			}
 /******/ 		
 /******/ 		}
@@ -249,8 +249,8 @@ var get = (module, getScope) => {
 };
 var init = (shareScope, initScope) => {
 	if (!__webpack_require__.S) return;
-	var oldScope = __webpack_require__.S["default"];
 	var name = "default"
+	var oldScope = __webpack_require__.S[name];
 	if(oldScope && oldScope !== shareScope) throw new Error("Container initialization failed as it has already been initialized with a different share scope");
 	__webpack_require__.S[name] = shareScope;
 	return __webpack_require__.I(name, initScope);

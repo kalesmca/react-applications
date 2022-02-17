@@ -39,10 +39,18 @@ var CustomerList = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function
 var RegistrationForm = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "webpack_container_remote_registration_app_registrationForm").then(__webpack_require__.t.bind(__webpack_require__, /*! registration_app/registrationForm */ "webpack/container/remote/registration_app/registrationForm", 23));
 });
+var TestApp = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "webpack_container_remote_registration_app_testApp").then(__webpack_require__.t.bind(__webpack_require__, /*! registration_app/testApp */ "webpack/container/remote/registration_app/testApp", 23));
+});
 
 
 var App = function App(props) {
-  console.log('props::', props);
+  console.log("props::", props);
+
+  var parentCallback = function parentCallback() {
+    alert('parent callback');
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Main Application loaded : ", props.name, "Customer", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_error_boundary__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
     fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Loading...")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(CustomerList, {
@@ -51,6 +59,10 @@ var App = function App(props) {
     fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Registration Loading...")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(RegistrationForm, {
     name: "Registration"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_error_boundary__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
+    fallback: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "Test App Loading...")
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(TestApp, {
+    parentCallback: parentCallback
   }))));
 };
 

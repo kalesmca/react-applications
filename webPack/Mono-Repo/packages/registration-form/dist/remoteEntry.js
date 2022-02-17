@@ -212,7 +212,7 @@ var registration_app;
 /******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 					installedChunks[chunkId][0]();
 /******/ 				}
-/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 				installedChunks[chunkId] = 0;
 /******/ 			}
 /******/ 		
 /******/ 		}
@@ -232,7 +232,10 @@ var exports = __webpack_exports__;
   \***********************/
 var moduleMap = {
 	"./registrationForm": () => {
-		return __webpack_require__.e("src_app_js").then(() => (() => ((__webpack_require__(/*! ./src/app.js */ "./src/app.js")))));
+		return Promise.all([__webpack_require__.e("vendors-node_modules_react_index_js"), __webpack_require__.e("src_app_js")]).then(() => (() => ((__webpack_require__(/*! ./src/app.js */ "./src/app.js")))));
+	},
+	"./testApp": () => {
+		return Promise.all([__webpack_require__.e("vendors-node_modules_react_index_js"), __webpack_require__.e("src_components_testApp_js")]).then(() => (() => ((__webpack_require__(/*! ./src/components/testApp.js */ "./src/components/testApp.js")))));
 	}
 };
 var get = (module, getScope) => {
@@ -249,8 +252,8 @@ var get = (module, getScope) => {
 };
 var init = (shareScope, initScope) => {
 	if (!__webpack_require__.S) return;
-	var oldScope = __webpack_require__.S["default"];
 	var name = "default"
+	var oldScope = __webpack_require__.S[name];
 	if(oldScope && oldScope !== shareScope) throw new Error("Container initialization failed as it has already been initialized with a different share scope");
 	__webpack_require__.S[name] = shareScope;
 	return __webpack_require__.I(name, initScope);

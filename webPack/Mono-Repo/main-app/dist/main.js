@@ -213,6 +213,9 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 			],
 /******/ 			"webpack_container_remote_registration_app_registrationForm": [
 /******/ 				"webpack/container/remote/registration_app/registrationForm"
+/******/ 			],
+/******/ 			"webpack_container_remote_registration_app_testApp": [
+/******/ 				"webpack/container/remote/registration_app/testApp"
 /******/ 			]
 /******/ 		};
 /******/ 		var idToExternalAndNameMapping = {
@@ -224,6 +227,11 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 			"webpack/container/remote/registration_app/registrationForm": [
 /******/ 				"default",
 /******/ 				"./registrationForm",
+/******/ 				"webpack/container/reference/registration_app"
+/******/ 			],
+/******/ 			"webpack/container/remote/registration_app/testApp": [
+/******/ 				"default",
+/******/ 				"./testApp",
 /******/ 				"webpack/container/reference/registration_app"
 /******/ 			]
 /******/ 		};
