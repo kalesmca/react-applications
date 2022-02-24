@@ -5,6 +5,7 @@ import CustomYearComponent from './components/custom-header-date';
 import DateRangeComponent from './components/date-range-component';
 import QuarterPickerComponent from './components/quarter-picker-component';
 import MonthPicker from './components/monthPicker';
+import ParentComponent from './containers/parent-container';
 function App() {
   const [updatedDate, setUpdatedDate] = useState(null)
 
@@ -15,10 +16,14 @@ function App() {
   return (
     <div>
       Parent : {updatedDate}
+
       <div>
+        ParentComponent :: <ParentComponent />
+      </div>
+      {/* <div>
         Basic Date pickers
         <BasicDateComponent onDateChange={onDateChange}/>
-      </div>
+      </div> */}
       <div>
         Custom:
         <CustomYearComponent/>
