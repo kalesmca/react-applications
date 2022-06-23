@@ -7,6 +7,7 @@ import QuarterPickerComponent from './components/quarter-picker-component';
 import MonthPicker from './components/monthPicker';
 import ScrollTestComponent from './components/scroll-test-component';
 import $ from 'jquery';
+import ParentComponent from './containers/parent-container';
 function App() {
   const [updatedDate, setUpdatedDate] = useState(null)
   const dynamicaArrList = Array.from({ length: 100 }, (_, idx) => `${++idx}`)
@@ -32,10 +33,14 @@ $(window).scroll(function() {
   return (
     <div>
       Parent : {updatedDate}
+
       <div>
+        ParentComponent :: <ParentComponent />
+      </div>
+      {/* <div>
         Basic Date pickers
         <BasicDateComponent onDateChange={onDateChange}/>
-      </div>
+      </div> */}
       <div>
         Custom:
         <CustomYearComponent/>
