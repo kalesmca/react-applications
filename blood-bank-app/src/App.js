@@ -5,13 +5,30 @@ import CustomYearComponent from './components/custom-header-date';
 import DateRangeComponent from './components/date-range-component';
 import QuarterPickerComponent from './components/quarter-picker-component';
 import MonthPicker from './components/monthPicker';
+import ScrollTestComponent from './components/scroll-test-component';
+import $ from 'jquery';
 function App() {
   const [updatedDate, setUpdatedDate] = useState(null)
-
+  const dynamicaArrList = Array.from({ length: 100 }, (_, idx) => `${++idx}`)
   const onDateChange = (data) =>{
     console.log('data:', data)
     setUpdatedDate(data.toString())
   }
+  let fixmeTop = $('.scr-head')?.offset()?.top;
+$(window).scroll(function() {
+    let currentScroll = $(window).scrollTop();
+    if (currentScroll >= fixmeTop) {
+        $('.scr-head').css({
+            position: 'fixed',
+            top: '0',
+            left: '0'
+        });
+    } else {
+        $('.scr-head').css({
+            position: 'static'
+        });
+    }
+});
   return (
     <div>
       Parent : {updatedDate}
@@ -36,6 +53,18 @@ function App() {
         Month picker:
         <MonthPicker />
       </div>
+
+      <div className='scr-head'>
+        Scroll Testing:
+        <ScrollTestComponent />
+      </div>
+      {
+        dynamicaArrList.map((data, index) =>{
+          return(
+            <div key={index}> {data} </div>
+          )
+        })
+      }
       
     </div>
   );
